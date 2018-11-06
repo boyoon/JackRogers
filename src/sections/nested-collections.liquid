@@ -39,15 +39,18 @@
   {% for block in section.blocks %}
     {% assign collection = collections[block.settings.collection] %}
     {% if block.settings.image %}{% assign hasImage = true %}{% else %}{% assign hasImage = false %}{% endif %}
-    <div class="NestedCollection__container js-nestedContainer" data-style="{{collection.title}}">
+    <div class="NestedCollection__container js-nestedContainer row" data-style="{{collection.title}}">
       <div class="NestedCollection__collection NestedCollection__grid">
         <div class="row NestedCollection__grid-cell NestedCollection__grid-cell-info js-collectionInfo" data-style="{{collection.title}}">
           <div class="NestedCollection__collection__info">
             <div class="NestedCollection__collection__heading-container">
               <img class="NestedCollection__collection__image" src="{{collection.image | img_url:'master'}}" alt="{{collection.featured_image.alt}}">
-              <h2 class="NestedCollection__collection__title h1 Link--partial-accent">{{collection.title}}</h2>
+              <div class="NestedCollection__collection__title-container">
+                <h2 class="NestedCollection__collection__title h1 Link--partial-accent">{{collection.title}}</h2>
+                <p class="NestedCollection__collection__body">{{collection.description}}</p>
+              </div>
+
             </div>
-            <p class="NestedCollection__collection__body">{{collection.description}}</p>
           </div>
         </div>
         {% for product in collection.products %}
