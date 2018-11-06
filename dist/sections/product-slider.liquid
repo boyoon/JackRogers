@@ -1,0 +1,82 @@
+<!-- sections/index-products.liquid -->
+
+{% assign collection = collections[section.settings.collection] %}
+{% assign title = section.settings.title | default: collection.title %}
+{% assign limit = section.settings.limit %}
+
+<section class="container l">
+  {% if title != blank %}
+    <header>
+      <h2>{{ title }}</h2>
+    </header>
+    <p class="ProductSlider__description">{{section.settings.description}}</p>
+  {% endif %}
+
+  <div class="row ProductSlider__row">
+    <div class="js-productSlider">
+    {% for product in collection.products %}
+      {% include 'collection-product' %}
+    {% endfor %}
+    </div>
+    <div class="ProductSlider--controls">
+      <div class="prev">{% include 'icon' with 'left-arrow' %}</div>
+      <div class="next">{% include 'icon' with 'right-arrow' %}</div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Product Slider",
+    "class": "ProductSlider",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Featured products"
+      },
+      {
+        "type": "text",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Slider",
+        "category": "Collections",
+        "settings": {
+          "collection": "frontpage"
+        }
+      }
+    ]
+  }
+{% endschema %}
+
+
+<script type="text/javascript">
+  $('.js-productSlider ').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: true,
+    nextArrow: $('.ProductSlider--controls .next'),
+    prevArrow: $('.ProductSlider--controls .prev'),
+    responsive:[
+      {
+        breakpoint:600,
+        settings: {
+          slidesToShow:2,
+          dots: true,
+          appendArrows: $('.ProductSlider--controls'),
+          appendDots: $('.ProductSlider--controls'),
+        }
+      }
+    ]
+  });
+</script>

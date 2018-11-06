@@ -1,0 +1,122 @@
+.ProductSlider{
+	margin-top:55px;
+}
+.ProductSlider .container{
+	max-width:1250px;
+	width:100%;
+}
+.ProductSlider__row{
+	position:relative;
+}
+.ProductSlider header h2{
+	text-align:center;
+	font-family:'Miller-Roman';
+	font-size:1.875rem;
+	text-transform:uppercase;
+	margin-bottom:5px;
+}
+.ProductSlider__description{
+	font-size:1.125rem;
+	font-family:'Brandon-reg';
+	text-align:center;
+}
+.ProductSlider .button-container{
+	display:none;
+}
+.ProductSlider .collection-product img{
+	margin:0 auto;
+}
+.ProductSlider .collection-product p{
+	text-align:center;
+	font-family:'Brandon-reg';
+	font-size:1rem;
+}
+.ProductSlider .collection-product a{
+	text-decoration:none;
+	text-transform:uppercase;
+	font-family:'Brandon-bold';
+	font-size:1rem;
+}
+.ProductSlider--controls .next{
+	position:absolute;
+	top:50%;
+	right:0;
+	transform:translate(0, -50%);
+}
+.ProductSlider--controls .prev{
+	position:absolute;
+	top:50%;
+	left:0;
+	transform:translate(0, -50%);
+}
+@include s-m(){
+	.ProductSlider .collection-product a{
+		font-size:.625rem;
+	}
+	.ProductSlider .collection-product p{
+		font-size:.625rem;
+	}
+}
+@include s(){
+	.ProductSlider{
+		margin-top:18px;
+	}
+	.ProductSlider__row{
+		margin-top:45px;
+	}
+	.ProductSlider header h2{
+		font-size:.875rem;
+	}
+	.ProductSlider__description{
+		font-size:.75rem;
+		margin-bottom:10px;
+	}
+	.ProductSlider--controls{
+		@include flex();
+		flex-direction:row;
+		position:absolute;
+		align-items:center;
+		top:-35px;
+		left:50%;
+		transform:translate(-50%, 0);
+	}
+
+	.ProductSlider .slick-dots{
+		bottom:initial;
+		top:0;
+	}
+	.ProductSlider .slick-active button{
+		background-color:#C3C3C3;
+	}
+	.ProductSlider .slick-dots button{
+		border-color:#C3C3C3;
+		margin:0 3.5px;
+	}
+	.ProductSlider--controls .prev,
+	.ProductSlider--controls .next{
+		top:initial;
+		left:initial;
+		transform:initial;
+		right:initial;
+		position:initial;
+	}
+	.ProductSlider--controls span svg{
+		height:14px;
+		width:14px;
+	}
+	.ProductSlider--controls .prev{
+		order:1;
+		margin-right:10px;
+	}
+	.ProductSlider--controls .next{
+		order:3;
+		margin-left:10px;
+	}
+	.ProductSlider--controls .slick-dots{
+		position:relative;
+		bottom:initial;
+		left:initial;
+		order:2;
+		transform:initial;
+	}
+}

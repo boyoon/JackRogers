@@ -1,0 +1,59 @@
+.MiddleBanner{
+	margin-top:60px;
+}
+.MiddleBanner__image{
+	position:relative;
+}
+.MiddleBanner__text{
+	position:absolute;
+	max-width:445px;
+	text-align:center;
+	width:100%;
+}
+.MiddleBanner__text--1{
+	text-transform:uppercase;
+	margin-bottom:0;
+    line-height: 44px;
+}
+.MiddleBanner__text--2{
+	text-transform:uppercase;
+	margin-bottom:0;
+}
+.MiddleBanner__text p{
+	font-family:'Brandon-Reg';
+}
+.MiddleBanner__text a{
+	margin:0 auto;
+	text-transform:uppercase;
+	font-size:.8125rem;
+	font-family:"Brandon-Bold";
+}
+
+@include s(){
+	.MiddleBanner{
+		margin-top:0;
+	}
+	.MiddleBanner__text{
+		padding:0 10px;
+	}
+	.MiddleBanner__text--mobile{
+		margin-top:18px;
+	}
+	.MiddleBanner__image--mobile{
+		text-align:center;
+		width:100%;
+	}
+	.MiddleBanner__text--1{
+		line-height:38px;
+	}
+	.MiddleBanner__text--mobile p{
+		margin-bottom:5px;
+	}
+	.MiddleBanner__text--mobile a{
+		margin:0 auto;
+		border:0;
+		text-transform:uppercase;
+		font-size:.8125rem;
+		font-family:"Brandon-Bold";
+	}
+}

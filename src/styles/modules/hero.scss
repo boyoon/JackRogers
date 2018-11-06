@@ -1,0 +1,57 @@
+.Hero__image{
+	height:476px;
+	background-size:cover;
+	position:relative;
+}
+.Hero__text--main{
+	text-transform:uppercase;
+	font-size:2.8125rem;
+}
+.Hero__text--sub{
+	font-size:1.125rem;
+	font-family:'Brandon-Reg';
+}
+.Hero__btn{
+	font-family:'Brandon-bold';
+	font-size:.8125rem;
+	font-weight:100;
+	margin:0 auto;
+	color:black;
+}
+.slick-dots{
+	display:flex;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+.slick-dots button{
+  font-size: 0;
+  border-radius: 50%;
+  height: 13px;
+  width: 13px;
+  padding: 0;
+  background-color:transparent;
+  border-color:white;
+  margin:0 6.5px;
+}
+.slick-dots .slick-active button{
+	background-color:white;
+}
+.Hero__text-container{
+	max-width:500px;
+	text-align:center;
+	width:100%;
+}
+@include s(){
+	.Hero__image{
+		height:auto;
+	}
+	.Hero__image img{
+		width:100%;
+	}
+	.Hero__slider--mobile .Hero__text-block{
+		text-align:center;
+		padding:25px 15px;
+	}
+}

@@ -1,0 +1,102 @@
+.RelatedProducts{
+	margin-top:40px;
+}
+.RelatedProducts hr{
+	border-color:black;
+}
+.RelatedProducts .CollectionProduct__column{
+	text-align:center;
+}
+.RelatedProducts .section-header__title{
+	text-align:center;
+	font-family:'Brandon-Bold';
+	font-size:1.25rem;
+	text-transform: uppercase;
+}
+.RelatedProducts .button-container{
+	display:none;
+}
+.RelatedProducts .CollectionProduct__title{
+	text-decoration: none;
+	text-transform:uppercase;
+	font-size:1rem;
+	text-align:center;
+	font-family:'Brandon-Bold';
+}
+.RelatedProducts .CollectionProduct__price{
+	font-family:'Brandon-Reg';
+	font-size:1rem;
+	margin-bottom:10px;
+}
+.RelatedProducts p{
+	text-align:center;
+	margin-bottom:0;
+}
+.RelatedProducts .CollectionProduct__column{
+	border:1px solid transparent;
+	transition:all .5s;
+	max-width:300px;
+	width:100%;
+	padding:0;
+}
+
+.RelatedProducts .CollectionProduct__column img{
+	max-height:300px;
+	max-width:300px;
+	width:100%;	
+}
+.RelatedProducts .CollectionProduct__detail-button a{
+	opacity:0;
+	visibility: hidden;
+	transition:all .5s;
+	background-color:black;
+	color:white;
+	text-transform:uppercase;
+	font-family:'Brandon-Bold';
+	width:100%;
+	max-width:100%;
+	height:45px;
+	line-height:45px;
+}
+.RelatedProducts .grid-uniform{
+	display:flex;
+	justify-content:space-evenly;
+}
+.RelatedProducts .CollectionProduct__column:hover{
+	border:1px solid #D2D2D2;
+	.CollectionProduct__detail-button a{
+		opacity:1;
+		visibility:visible;
+	}
+}
+
+@include s(){
+	.RelatedProducts{
+		margin-top:0;
+	}
+	.RelatedProducts hr{
+		margin-top:0;
+	}
+	.RelatedProducts .grid-uniform{
+		display:block;
+	}
+	.RelatedProducts .CollectionProduct__column{
+		width:50%;
+		max-width:initial;
+	}
+	.RelatedProduct h2{
+		font-size: .9375rem;
+	}
+	.RelatedProducts .CollectionProduct__column img{
+		max-height:143px;
+	}
+	.RelatedProducts .CollectionProduct__title{
+		font-size:.625rem;
+	}
+	.RelatedProducts .CollectionProduct__column p{
+		line-height:10px;
+	}
+	.RelatedProducts .CollectionProduct__price{
+		font-size:.625rem;
+	}
+}

@@ -1,0 +1,106 @@
+<!-- /snippets/{{ section.id }}.liquid -->
+
+{% assign enable_search = section.settings.enable_search %}
+
+<header class="theme-header" role="banner">
+  <div class="container m-hide s-hide">
+    <div class="row flex v-end h-space-between">
+      
+      <div class="Header__icons column l12 m12 s12 s-center right">
+        <a href="" class="Search">{% include 'icon' with 'search' %}</a>
+        {% if customer %}
+          <a href="/account" data-trigger="popup" data-target="#PopupAccount">
+          {% include 'icon' with 'login' %}</a>
+        {% else %}
+          <a href="/account">
+          {% include 'icon' with 'login' %}</a>
+        {% endif %}
+
+        <a href="" class="Wishlist">{% include 'icon' with 'wishlist' %}</a>
+        <a href="/cart" id="CartLink" data-trigger="popup" data-target="#PopupCart" aria-controls="Cart" aria-expanded="false" class="Header__cart v-middle">
+          {% include 'icon' with 'cart' %}
+          {%comment%}<span data-cart-item-count>{{ cart.item_count }}</span>
+          (<span data-cart-total>{{ cart.total_price | money_with_currency }}</span>)
+          {% endcomment%}
+        </a>
+
+
+        <div class="s-show margin-top-2x">
+          <a href="#PopupNavigation" data-trigger="popup" data-target="#PopupNavigation">
+            {{ 'common.menu' | t }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header__logo row flex v-center">
+      <div class="column s12 s-center">
+        {% include 'theme-logo' %}
+      </div>
+
+    </div>
+    
+    <div class="Header__linkedlist row flex v-center h-space-between s-hide">
+      <div class="column left">
+        {% include 'theme-nav-main' %}
+      </div>
+    {% comment %}
+
+      {% if enable_search %}
+        <div class="column right">
+          {% include 'form-search' %}
+        </div>
+      {% endif %}
+    {% endcomment %}
+      
+    </div>
+
+
+  </div>
+
+  <div class="container Header__icon--mobile l-hide">
+    <div class="row flex">
+      <div class="column s3 Header__icon--menu">
+        <a href="#PopupNavigation" data-trigger="popup" data-target="#PopupNavigation">
+          {% include 'icon' with 'menu' %}
+        </a>
+      </div>
+      <div class="column s6 Header__icon--logo">
+        {% include 'theme-logo' %}
+      </div>
+      <div class="column s3 Header__icon--search">        
+        <a href="" class="Search">{% include 'icon' with 'search' %}</a>
+        <a href="/cart" id="CartLink" data-trigger="popup" data-target="#PopupCart" aria-controls="Cart" aria-expanded="false" class="Header__cart v-middle">
+          {% include 'icon' with 'cart' %}
+          {%comment%}<span data-cart-item-count>{{ cart.item_count }}</span>
+          (<span data-cart-total>{{ cart.total_price | money_with_currency }}</span>)
+          {% endcomment%}
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+
+
+{% include 'theme-nav-toggled' %}
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Header"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_search",
+        "label": "Enable search",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

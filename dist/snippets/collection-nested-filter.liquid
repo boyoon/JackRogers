@@ -1,0 +1,53 @@
+<ul class="NestedFilter js-nestedFilter">
+  <li class="NestedFilter__option-container js-optionContainer js-optionContainer-style">
+    <button class="NestedFilter__option js-filterOption" type="button" value="style">Style</button>
+    <div class="NestedFilter__values-container js-valuesContainer--style">
+      <ul class="NestedFilter__values container l js-filter js-filterStyles">
+        {% for block in section.blocks %}
+          {% assign collection = collections[block.settings.collection] %}
+          <li class="NestedFilter__value-container--style">
+          <button class="NestedFilter__value NestedFilter__value--style js-filterValue" type="button" value="style_{{collection.title}}">
+
+            <div>{{collection.title}}</div>
+          </button>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </li>
+  <li class="NestedFilter__option-container js-optionContainer js-optionContainer-size">
+    <button class="NestedFilter__option js-filterOption" type="button" value="size">Size</button>
+    <div class="NestedFilter__values-container js-valuesContainer--size">
+      <ul class="NestedFilter__values container l js-filter js-filterSizes">
+        
+      </ul>
+    </div>
+  </li>
+  <li class="NestedFilter__option-container js-optionContainer js-optionContainer-height">
+    <button class="NestedFilter__option js-filterOption" type="button" value="height">Height</button>
+    <div class="NestedFilter__values-container js-valuesContainer--height">
+      <ul class="NestedFilter__values container l js-filter js-filterHeights">
+        
+      </ul>
+    </div>
+  </li>
+  <li class="NestedFilter__option-container js-optionContainer js-optionContainer-color">
+    <button class="NestedFilter__option js-filterOption" type="button" value="color">Color</button>
+    <div class="NestedFilter__values-container js-valuesContainer--color">
+      <ul class="NestedFilter__values container l js-filter js-filterColors">
+        
+      </ul>
+    </div>
+  </li>
+  <li class="NestedFilter__option-container js-optionContainer js-optionContainer-material">
+    <button class="NestedFilter__option js-filterOption" type="button" value="material">Material</button>
+    <div class="NestedFilter__values-container js-valuesContainer--material">
+      <ul class="NestedFilter__values container l js-filter js-filterMaterials">
+        
+      </ul>
+    </div>
+  </li>
+</ul>
+<ul class="ActiveFilters js-activeFilters">
+
+</ul>

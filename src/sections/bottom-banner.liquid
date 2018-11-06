@@ -1,0 +1,198 @@
+<div class="BottomBanner__container">
+	<div class="BottomBanner__image" style="">
+		<div class="BottomBanner__text">			
+			<h2>{{section.settings.banner_maintext_line_1}}</h2>
+			<p>{{section.settings.banner_description}}</p>
+			<a class="button" href="{{section.settings.banner_url}}">{{section.settings.banner_button_text}}</a>
+		</div>
+	</div>
+</div>
+
+<style>
+.BottomBanner__image{
+	height:{{section.settings.height}}px;
+	background:url('{{section.settings.image | img_url:'master'}}');
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-position:{{section.settings.leftright}}% {{section.settings.updown}}%;
+}
+.BottomBanner__text{
+	top:50%;
+	left:50%;
+	transform:translate({{section.settings.leftright_2}}%, {{section.settings.updown_2}}%);
+}
+.BottomBanner__text h2{
+	font-size:{{section.settings.font_size}}px;
+	color:{{section.settings.color_1}};
+}
+.BottomBanner__text p{
+	font-size:{{section.settings.font_size_2}}px;
+	color:{{section.settings.color_2}};
+}
+.BottomBanner__text a{
+	border-color:{{section.settings.banner_button_border_color}};
+}
+
+@media screen and (max-width:600px){
+	.BottomBanner__image{
+		background:url('{{section.settings.mobile_image | img_url: 'master'}}');
+		background-repeat:no-repeat;
+		background-size:cover;
+		background-position:{{section.settings.leftright}}% {{section.settings.updown}}%;
+	}
+	.BottomBanner__text h2{
+		font-size:{{section.settings.mobile_font_size}}px;
+
+	}
+	.BottomBanner__text p{
+		font-size:{{section.settings.mobile_font_size_2}}px;
+	}
+}	
+</style>
+
+
+{% schema %}
+{
+  "name": "Bottom Banner",
+  "class":"BottomBanner",
+  "settings":[
+    {
+      "type":"header",
+      "content":"Bottom Banner Settings"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+    	"type":"text",
+    	"id":"height",
+    	"label":"Banner Height (Numbers only)"
+    },
+    {
+    	"id":"mobile_image",
+    	"type":"image_picker",
+    	"label":"Mobile Image"
+    },
+    {
+      "id":"updown",
+      "type":"text",
+      "label":"Vertical Image Position (Numerical Value Only)",
+      "default": "50"
+    },
+    {
+      "id":"leftright",
+      "type":"text",
+      "label":"Horizontal Image Position (Numerical Value Only)",
+      "default": "50"
+    },
+    {
+      "type":"header",
+      "content":"Text Settings"
+    },
+    {
+			"type":"text",
+			"label":"Vertical Text Position (-100-100)",
+			"id":"leftright_2",
+			"default":"-50"
+    },
+    {
+			"type":"text",
+			"label":"Horizontal Text Position (-100-100)",
+			"id":"updown_2",
+			"default":"-50"
+    },
+    {
+      "id": "banner_maintext_line_1",
+      "type": "text",
+      "label": "Main Text Line 1"
+    },
+    {
+	    "type":      "range",
+	    "id":        "font_size",
+	    "min":       1,
+	    "max":        99,
+	    "step":       1,
+	    "unit":       "px",
+	    "label":     "Font size (1-99px)",
+	    "default":   16
+		},
+		{
+			"type":"color",
+			"id":"color_1",
+			"label":"Title Color"
+		},
+    {
+	    "type":      "range",
+	    "id":        "mobile_font_size",
+	    "min":       1,
+	    "max":        99,
+	    "step":       1,
+	    "unit":       "px",
+	    "label":     "Mobile Font size (1-99px)",
+	    "default":   16
+		},
+    {
+      "id": "banner_description",
+      "type": "text",
+      "label": "Description"
+    },
+    {
+	    "type":      "range",
+	    "id":        "font_size_2",
+	    "min":       1,
+	    "max":        99,
+	    "step":       1,
+	    "unit":       "px",
+	    "label":     "Font size (1-99px)",
+	    "default":   16
+		},
+    {
+	    "type":      "range",
+	    "id":        "mobile_font_size_2",
+	    "min":       1,
+	    "max":        99,
+	    "step":       1,
+	    "unit":       "px",
+	    "label":     "Mobile Font size (1-99px)",
+	    "default":   16
+		},
+		{
+			"type":"color",
+			"id":"color_2",
+			"label":"Description Color"
+		},
+    {
+      "type":"header",
+      "content":"Button Settings"
+    },
+    {
+      "id":"banner_button_text",
+      "type":"text",
+      "label":"Button Text"
+    },
+    {
+      "id":"banner_button_font_color",
+      "type":"color",
+      "label":"Button Font Color"
+    },
+    {
+      "id":"banner_button_border_color",
+      "type":"color",
+      "label":"Button Border Color"
+    },
+    {
+      "id": "banner_url",
+      "type":"url",
+      "label":"Button Url"
+    }
+  ],
+  "presets":[{
+      "name": "Bottom Banner",
+      "category": "Homepage"
+    }
+  ]
+}
+{% endschema %}
+

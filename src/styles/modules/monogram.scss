@@ -1,0 +1,73 @@
+.Monogram{
+	max-width:1360px;
+	margin:0 auto;
+	margin-top:50px;
+}
+.Monogram .row{
+	margin-left:-10px;
+	margin-right:-10px;
+}
+.Monogram .column{
+	padding: 0 10px;
+}
+.Monogram__title{
+	font-family:'Miller-Roman';	
+	font-size:1.875rem;
+	text-align:center;
+	text-transform:uppercase;
+	margin-bottom:11px;
+}
+.Monogram__sub{
+	text-align:center;
+	font-size:1.125rem;
+	font-family:'Brandon-reg';
+	margin-bottom:30px;
+}
+.Monogram__image img{
+	width:100%;
+}
+.Monogram__text h2{
+	font-size:1rem;
+	font-family:'Brandon-bold';
+	text-transform:uppercase;
+	margin-bottom:0;
+	text-align:center;
+}
+.Monogram__text p{
+	font-family:'Brandon-bold';
+	font-size:.8125rem;
+	text-align:center;
+	margin-bottom:25px;
+}
+.Monogram__url{
+	text-decoration:none;
+}
+@include m(){
+	.Monogram__text h2{
+		font-size:.6875rem;
+	}
+}
+@include s(){
+	.Monogram{
+		margin-top:25px;
+	}
+	.Monogram__title{
+		font-size:.875rem;
+		margin-top:18px;
+	}
+	.Monogram__sub{
+		font-size:.75rem;
+	}
+	.Monogram__text{
+		margin-bottom:30px;
+		margin-top:8px;
+	}
+	.Monogram__text h2{
+		font-size:.6875rem;
+	}
+	.Monogram__text p{
+		font-size:.5625rem;
+	}
+
+}
+

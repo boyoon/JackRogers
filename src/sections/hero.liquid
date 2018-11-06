@@ -1,0 +1,207 @@
+
+<div class="Hero__container js-hero s-hide">
+	{% for block in section.blocks %}
+    <div class="Hero__image" style="background-image: url('{{block.settings.hero_image | img_url:'master'}}'); background-position: 50% {{block.settings.vertical_position}};">
+      <!-- output block content -->
+      {% if block.settings.hero_maintext_line_1 != '' %}
+      <div class="Hero__text-container" style="position:absolute; top:{{block.settings.updown}}%; left:{{block.settings.leftright}}%; transform:translate(-50%, -50%);">
+        <div class="Hero__text-block">
+          <h2 class="Hero__text--main">{{block.settings.hero_maintext_line_1}}</h2>
+          <h2 class="Hero__text--sub">{{block.settings.hero_maintext_line_2}}</h2>
+          {% unless block.settings.hero_button_text == blank %}
+          <a href="{{block.settings.hero_url}}" class="Hero__btn btn button" style="color:{{block.settings.hero_button_font_color}}">{{block.settings.hero_button_text}}</a>
+          {% endunless %}
+        </div>
+      </div>
+      {% endif %}
+    </div>			
+	{% endfor %}
+</div>
+
+<div class="Hero__container Hero__container--mobile l-hide m-hide {% if section.settings.enable %} js-hero {% endif %}">
+  {% for block in section.blocks %}
+    <div class="Hero__slider--mobile">
+    <div class="Hero__image">
+      <img src="{{block.settings.hero_image_mobile | img_url:'master'}}">
+    </div>
+    <div class="Hero__text-block">
+      <h2 class="Hero__text--main">{{block.settings.hero_maintext_line_1}}</h2>
+      <h2 class="Hero__text--sub">{{block.settings.hero_maintext_line_2}}</h2>
+      {% unless block.settings.hero_button_text == blank %}
+      <a href="{{block.settings.hero_url}}" class="Hero__btn btn button" style="color:{{block.settings.hero_button_font_color}}">{{block.settings.hero_button_text}}</a>
+      {% endunless %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+<style>
+  .Hero__text--main{
+    color:{{section.settings.title_color}};
+    font-size: {{section.settings.title_size}}px;
+  }
+  .Hero__text--sub{
+    color:{{section.settings.title_color_2}};
+    font-size: {{section.settings.title_size_2}}px;
+  }
+  @media screen and (max-width:600px){
+    .Hero__text--main{
+      font-size:{{section.settings.title_size_mobile}}px;
+    }
+    .Hero__text--sub{
+      font-size: {{section.settings.title_size_2_mobile}}px;
+    }
+  }
+</style>
+
+
+{% schema %}
+{
+  "name": "Main Hero Slider",
+  "class":"Hero",
+  "settings":[
+    {
+      "type":"checkbox",
+      "label":"Enable mobile Slider?",
+      "default":true,
+      "id":"enable"
+    },
+    {
+      "type":"color",
+      "label":"Title Color",
+      "id":"title_color"
+    },
+    {
+      "type":      "range",
+      "id":        "title_size",
+      "min":       1,
+      "max":        99,
+      "step":       1,
+      "unit":       "px",
+      "label":     "Font size (1-99px)",
+      "default":   16
+    },
+    {
+      "type":      "range",
+      "id":        "title_size_mobile",
+      "min":       1,
+      "max":        99,
+      "step":       1,
+      "unit":       "px",
+      "label":     "Font size (1-99px) Mobile",
+      "default":   16
+    },
+    {
+      "type":"color",
+      "id":"title_color_2",
+      "label":"Description Color"
+    },
+    {
+      "type":      "range",
+      "id":        "title_size_2",
+      "min":       1,
+      "max":        99,
+      "step":       1,
+      "unit":       "px",
+      "label":     "Font size (1-99px)",
+      "default":   16
+    },
+    {
+      "type":      "range",
+      "id":        "title_size_2_mobile",
+      "min":       1,
+      "max":        99,
+      "step":       1,
+      "unit":       "px",
+      "label":     "Font size (1-99px) Mobile",
+      "default":   16
+    }
+  ],
+  "blocks":[{
+    "type":"Hero",
+    "name":"Hero",
+    "limit": 3,
+    "settings": [
+      {
+        "type":"header",
+        "content":"General Settings"
+      },
+      {
+        "id":"hero_slide_enable",
+        "type":"checkbox",
+        "label":"Enable Slide"
+      },
+      {
+        "id": "hero_image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "hero_image_mobile",
+        "type": "image_picker",
+        "label": "Mobile Image"
+      },
+      {
+        "id":"updown",
+        "type":"text",
+        "label":"Vertical Position Image (Numerical Value Only)"
+      },
+      {
+        "id":"leftright",
+        "type":"text",
+        "label":"Horizontal Position Image (Numerical Value Only)"
+      },
+      {
+        "type":"header",
+        "content":"Text Settings"
+      },
+      {
+        "id": "hero_maintext_line_1",
+        "type": "text",
+        "label": "Main Text Line 1"
+      },
+      {
+        "id": "hero_maintext_line_2",
+        "type": "text",
+        "label": "Main Text Line 2"
+      },
+      {
+        "type":"header",
+        "content":"Button Settings"
+      },
+      {
+        "id":"hero_button_text",
+        "type":"text",
+        "label":"Button Text"
+      },
+      {
+        "id":"hero_button_font_color",
+        "type":"color",
+        "label":"Button Font Color"
+      },
+      {
+        "id": "hero_url",
+        "type":"url",
+        "label":"Button Url"
+      }
+    ]
+  }],
+  "presets":[{
+      "name": "Main Hero Slider",
+      "category": "Homepage"
+    }
+  ]
+}
+{% endschema %}
+
+{% javascript %}
+//Initalize Hero Slider 
+  $('.js-hero').slick({
+    nextArrow: $('.hero-controls .next'),
+    prevArrow: $('.hero-controls .prev'),
+    dots: true,
+    autoplaySpeed: 5000,
+    autoplay: true,
+  });
+{% endjavascript %}

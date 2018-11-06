@@ -1,0 +1,44 @@
+.BottomBanner{
+	margin-top:60px;
+}
+.BottomBanner__image{
+	position:relative;
+}
+.BottomBanner__text{
+	position:absolute;
+	max-width:616px;
+	text-align:center;
+	width:100%;
+}
+.BottomBanner__text h2{
+	text-transform:uppercase;
+	margin-bottom:0;
+}
+.BottomBanner__text p{
+	font-family:'Brandon-Reg';
+}
+.BottomBanner__text a{
+	margin:0 auto;
+	text-transform:uppercase;
+	font-size:.8125rem;
+	font-family:"Brandon-Bold";
+}
+
+@include s(){
+	.BottomBanner{
+		margin-top:0;
+	}
+	.BottomBanner__text{
+		padding:0 10px;
+	}
+	.BottomBanner__text h2{
+		line-height:38px;
+		margin-bottom:10px;
+	}
+	.BottomBanner__text p{
+		margin-bottom:5px;
+	}
+	.BottomBanner__text a{
+		border:0;
+	}
+}

@@ -1,0 +1,43 @@
+<!-- sections/theme-promobar.liquid -->
+<div class="PromoBar">
+  <div class="PromoBar__text">
+    <p>{{section.settings.title}}</p>
+  </div>
+</div>
+
+
+<style>
+  .PromoBar__text{
+    background-color:{{section.settings.background_color}};
+  }
+  .PromoBar__text p{
+    color:{{section.settings.text}};
+    text-align:center;
+    margin-bottom:0;
+  }
+</style>
+
+
+{% schema %}
+  {
+    "name": "Promo Bar",
+    "class": "PromoBar",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "text",
+        "label": "Text Color"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }
+    ]
+  }
+{% endschema %}

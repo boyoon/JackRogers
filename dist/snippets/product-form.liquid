@@ -1,0 +1,116 @@
+
+<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+  <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+  <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+
+  <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" enctype="multipart/form-data">
+
+    <span class="hidden">{{ 'product.regular_price' | t }}</span>
+    <span id="ProductPrice" class="h2" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+      {{ current_variant.price | money }}
+    </span>
+
+
+
+  <div class="rte" itemprop="description">
+    {{ product.description }}
+  </div>
+  
+  <hr class="Product__border">
+    
+
+  <div class="ProductForm__color">
+  <h2>Color</h2>
+  <ul class="ProductForm__values ProductForm__values--color">
+    {% for prod in collections.all.products %}
+      {% if product.title == prod.title and product.type == prod.type and product.metafields.c_f.product_material == prod.metafields.c_f.product_material %}
+        <li>
+          <a href="{{prod.url}}" class="ProductForm__value ProductForm__value--color {% if product.url == prod.url %}active{% endif %}" style="background-color: {{prod.metafields.color.swatch}}" title="{{prod.metafields.c_f.colorway}}"></a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  </div>
+    {% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+      {% for option in product.options_with_values %}
+        <label {% if option.name == 'default' or option.name =='Color' %}class="hidden" {% endif %}for="SingleOptionSelector-{{ forloop.index }}">
+          {{ option.name }}
+        </label>
+        <div class="select-wrapper {% if option.name contains 'Size'% or option.name contains 'Color' %} hidden {%endif %}">
+          <select class="single-option-selector" id="SingleOptionSelector-{{ forloop.index }}" data-index="option{{ forloop.index }}">
+            {% for value in option.values %}
+              <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        {% if option.name contains 'Size' %}
+          <div class="ProductForm__values ProductForm__values--size">
+          {% for value in option.values %}
+          {% include 'option-availability-check' %}
+          <button
+            class="ProductForm__value
+              ProductForm__value--size js-sizeVariantButton
+              {% if optionDisabled %}disabled{% endif %}
+              {% if current_variant.option1 == value or current_variant.option2 == value or current_variant.option3 == value %}active{% endif %}"
+            type="button" 
+            value="{{value}}" 
+          >{{ value | remove:'Mens' | remove:'Womens' | remove:'Kids' }}
+          </button>               
+          {% endfor %}
+
+          </div>
+        {% endif %}
+        {% if option.name contains 'Color'%}
+        {% endif %}
+      {% endfor %}
+    {% endunless %}
+  
+    {% comment %}
+      Original variant selector, the customer will not see this element
+    {% endcomment %}
+    <div class="hidden">
+      <div class="select-wrapper">
+        <select name="id" id="productSelect" data-index="option{{ forloop.index }}">
+          {% for variant in product.variants %}
+            {% if variant.available %}
+              <option
+                value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}
+              </option>
+            {% else %}
+              <option disabled="disabled">
+                {{ variant.title }} - {{ 'product.sold_out' | t }}
+              </option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+
+    {% if on_sale %}
+      <p id="OnSale">
+        <span class="hidden">{{ 'product.original_price' | t }}</span>
+        <span>{{ 'product.original_price' | t }}</span>
+        <s id="ComparePrice">{{ product.compare_at_price | money }}</s>
+      </p>
+    {% endif %}
+
+    <label for="Quantity">{{ 'product.quantity' | t }}</label>
+    <div class="quantity-adjust">
+      {%comment%}<a class="adjust" data-change="-1">&#8211;</a>{% endcomment%}
+       <input type="number" id="Quantity" class="Product__quantity quantity" name="quantity" placeholder="1" value="1" min="1" data-cart-quantity="1">
+      {%comment%}<a class="adjust" data-change="1">&#43;</a>{%endcomment%}
+    </div>
+    <div class="Product__button-container">
+    {% if sold_out %}
+      <button type="submit" name="add" data-add-to-cart disabled>
+        <span id="AddToCartText">{{ 'product.sold_out' | t }}</span>
+      </button>
+    {% else %}
+    <button class="ProductForm__submit Btn Btn--primary Btn--big js-productAdd" data-cart-add="{{product.selected_or_first_available_variant.id}}" data-cart-quantity="1" type="submit" name="add">
+      <span id="AddToCartText">{{ 'product.add_to_cart' | t }}</span>
+    </button>
+    {% endif %}
+  </div>
+  </form>
+</div>

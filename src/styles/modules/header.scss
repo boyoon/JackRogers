@@ -1,0 +1,70 @@
+/* Header ====================================================================*/
+
+.theme-header {
+  padding:15px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1194);
+  z-index: 1;
+  position: relative;
+}
+
+.Header__icons{
+	height:17px;
+}
+.Header__icons a{
+	display:inline-block;
+	margin:0 7.5px;
+}
+.Header__icons a svg{
+	width:14px;
+	height:14px;
+}
+.Header__icons .Header__cart{
+	margin-bottom:1px;
+}
+.Header__logo .column{
+	@include flex-justify(center);
+	@include flex();
+}
+.Header__linkedlist{
+	margin-top:15px;
+}
+.Header__linkedlist .column{
+	width:100%;
+	text-align:center;
+}
+.Header__linkedlist .nav-link{
+	margin-left: 37.5px;
+	margin-right: 37.5px;
+	text-decoration: none;
+}
+.Header__icon--mobile .row.flex{
+	flex-flow:nowrap;
+}
+.Header__icon--logo img{
+	margin:0 auto;
+}
+.Header__icon--search,
+.Header__icon--menu{
+	display:flex;
+	align-items:center;
+}
+.Header__icon--search{
+	justify-content:flex-end;
+}
+.Header__icon--search svg,
+.Header__icon--menu svg{
+	width:16px;
+	height:16px;
+}
+.Header__icon--search .icon-cart{
+	margin-left:4px;
+}
+@include s(){
+	.Header__icon--menu,
+	.Header__icon--search{
+		padding:0 16px;
+	}
+	.Header__icon--logo{
+		padding:0;
+	}
+}

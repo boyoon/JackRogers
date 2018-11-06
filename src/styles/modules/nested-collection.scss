@@ -1,0 +1,43 @@
+.NestedCollection__banner{
+	@include flex();
+	align-items:center;
+
+}
+.NestedCollection__banner picture{
+	width:35%;
+}
+.NestedCollection__banner img{
+	width:100%;
+}
+.NestedCollection__banner .NestedCollection__header{
+	width:30%;
+}
+.NestedCollection__banner .NestedCollection__header h1{
+	font-size:2.8125rem;
+	font-family:'Brandon-Reg';
+	text-align:center;
+	margin-bottom:0;
+	text-transform:uppercase;
+}
+.NestedCollection__banner .NestedCollection__header p{
+	font-size:1.125rem;
+	font-family:'Brandon-Reg';
+	text-align:center;
+}
+@media screen and (max-width:1000px){
+	.NestedCollection__banner picture{
+		display:none;
+	}
+	.NestedCollection__banner .NestedCollection__header{
+		width:100%;
+		margin-top:20px;
+	}
+}
+@include s(){
+	.NestedCollection__banner .NestedCollection__header h1{
+		font-size:1.375rem;
+	}
+	.NestedCollection__banner .NestedCollection__header p{
+		font-size:.75rem;
+	}
+}

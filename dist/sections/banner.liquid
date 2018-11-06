@@ -1,0 +1,84 @@
+<div class="Banner__container">
+  <div class="Banner__image" style="background-image: url('{{section.settings.banner_image | img_url:'master'}}'); background-position: 50% {{section.settings.vertical_position}};">
+    <div class="Banner__text-container">
+      <div class="Banner__text-block">
+        <h2 class="Banner__text--main">{{section.settings.banner_maintext_line_1}}</h2>
+        <h2 class="Banner__text--main-sub">{{section.settings.banner_maintext_line_2}}</h2>
+        <p class="Banner__text--sub">{{section.settings.banner_description}}</p>
+        <a href="{{section.settings.banner_url}}">{{section.settings.banner_button_text}}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Banner",
+  "class":"Banner",
+  "settings":[
+    {
+      "type":"header",
+      "content":"Banner Settings"
+    },
+    {
+      "id": "banner_image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id":"updown",
+      "type":"text",
+      "label":"Vertical Position Image (Numerical Value Only)"
+    },
+    {
+      "id":"leftright",
+      "type":"text",
+      "label":"Horizontal Position Image (Numerical Value Only)"
+    },
+    {
+      "type":"header",
+      "content":"Text Settings"
+    },
+    {
+      "id": "banner_maintext_line_1",
+      "type": "text",
+      "label": "Main Text Line 1"
+    },
+    {
+      "id": "banner_maintext_line_2",
+      "type": "text",
+      "label": "Main Text Line 2"
+    },
+    {
+      "id": "banner_description",
+      "type": "text",
+      "label": "Description"
+    },
+    {
+      "type":"header",
+      "content":"Button Settings"
+    },
+    {
+      "id":"banner_button_text",
+      "type":"text",
+      "label":"Button Text"
+    },
+    {
+      "id":"banner_button_font_color",
+      "type":"color",
+      "label":"Button Font Color"
+    },
+    {
+      "id": "banner_url",
+      "type":"url",
+      "label":"Button Url"
+    }
+  ],
+  "presets":[{
+      "name": "Main Banner",
+      "category": "Homepage"
+    }
+  ]
+}
+{% endschema %}
+

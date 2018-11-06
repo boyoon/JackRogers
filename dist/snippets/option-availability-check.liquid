@@ -1,0 +1,15 @@
+{% assign optionDisabled = true %}
+{% for v in product.variants %}
+  {% if v.option1 == value and v.available %}
+    {% assign optionDisabled = false %}
+    {% break %}
+  {% endif %}
+  {% if v.option2 == value and v.available %}
+    {% assign optionDisabled = false %}
+    {% break %}
+  {% endif %}
+  {% if v.option3 == value and v.available %}
+    {% assign optionDisabled = false %}
+    {% break %}
+  {% endif %}
+{% endfor %}
