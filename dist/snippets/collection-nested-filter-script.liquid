@@ -110,9 +110,8 @@ class NestedFilter{
     let windowWidth = $(window).width();
     let filterValuesContainer = '.NestedFilter__values-container';
     if(windowWidth <= 600){
-      $(filterValuesContainer).width(windowWidth);
       $(filterValuesContainer+':odd').each(function(){
-        $(this).css('left','-' + windowWidth/2 + 'px');
+
       });
     }
   }
@@ -329,6 +328,8 @@ class NestedFilter{
     });
   }
 }
+
+
 
 const Filter = new NestedFilter();
 Filter.initFilter();

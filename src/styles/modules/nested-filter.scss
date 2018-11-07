@@ -1,5 +1,6 @@
 .NestedFilter{
 	width:100%;
+	max-width:183px;
 }
 .NestedFilter__option{
 	background-color:transparent;
@@ -8,6 +9,8 @@
 	padding:0;
 	font-family:'Brandon-Bold';
 	font-size:.75rem;
+	height:25px;
+	line-height:25px;
 }
 .NestedFilter__values .NestedFilter__value{
 	background-color:white;
@@ -15,6 +18,8 @@
 	border:0;
 	font-family:'Brandon-Reg';
 	font-size:.75rem;
+	height:25px;
+	line-height:25px;
 }
 .NestedFilter__option{
 	position:relative;
@@ -30,4 +35,57 @@
 	position:absolute;
 	top:2px;
 	right:0px;
+}
+.NestedFilter__value--style{
+	padding:0;
+}
+.NestedFilter__option-container .NestedFilter__values-container{
+	display:none;
+}
+.NestedFilter__option-container.active .NestedFilter__values-container{
+	display:block;
+}
+.NestedFilter__top .NestedFilter__option {
+	font-weight:bold;
+	margin-bottom:20px;
+	text-transform:uppercase;
+	font-size:1.125rem;
+}
+.NestedFilter__bottom .NestedFilter__option-container{
+	border-bottom:1px solid black;
+}
+.NestedFilter__bottom .NestedFilter__option {
+	text-transform:uppercase;
+}
+.NestedFilter__center{
+	font-family:'Brandon-Bold';
+	margin-top:120px;
+	font-size:1.125rem;
+	text-transform:uppercase;
+	margin-bottom:20px;
+}
+.NestedFilter__values .NestedFilter__value{
+	padding:0;
+}
+.NestedCollection__filter-container .BorderBottom {
+	padding-left:88px;
+}
+
+@media screen and (max-width:1200px){
+	.NestedCollection__filter-container .BorderBottom {
+		padding-left:0;
+	}
+	.NestedFilter__center{
+		margin-top:0;
+	}
+	.NestedFilter__bottom,
+	.NestedFilter__option-container .NestedFilter__values-container{
+		display:none;
+	}
+}
+@include s(){
+	.NestedFilter{
+		width:50%;
+		max-width:100%;
+	}
 }

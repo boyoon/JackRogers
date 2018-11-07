@@ -14,14 +14,33 @@
   {% assign on_sale = true %}
 {% endif %}
 <div class="CollectionProduct__column collection-product {{ column_width }}{% if sold_out %} sold_out{% endif %}{% if on_sale %} on_sale{% endif %}">
+<div class="CollectionProduct__wrapper">
   {% if product.featured_image %}
     <a href="{{ product.url | within: collection }}">
       <img srcset="{{ product.featured_image | img_url: '512x512', scale: 2 }} 2x" src="{{ product.featured_image | img_url: '512x512' }}" alt="{{ product.featured_image.alt | escape }}">
     </a>
   {% endif %}
 
-  <p>
-    <a class="CollectionProduct__title" href="{{ product.url | within: collection }}">{{ product.title }}</a><br>
+
+    {% for tag in product.tags %}
+    {% if tag contains 'new' %}
+    <span class="Product__new">New!</span>
+    {% endif %}
+    {% endfor %}
+
+
+  <ul class="ProductForm__values ProductForm__values--color">
+    {% for prod in collections.all.products %}
+      {% if product.title == prod.title and product.type == prod.type and product.metafields.c_f.product_material == prod.metafields.c_f.product_material %}
+        <li>
+          <a href="{{prod.url}}" class="ProductForm__value ProductForm__value--color {% if product.url == prod.url %}active{% endif %}" style="background-color: {{prod.metafields.color.swatch}}" title="{{prod.metafields.c_f.colorway}}"></a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  <p class="CollectionProduct__text-container">
+
+<a class="CollectionProduct__title" href="{{ product.url | within: collection }}">{{ product.title }}</a><br>
     {% if on_sale %}
       {% if product.price_varies %}
         <p class="CollectionProduct__price">{{ 'product.on_sale_from_html' | t: price: sale_price }}</p>
@@ -50,4 +69,5 @@
       <span id="AddToCartText">{% if sold_out %}{{ 'product.sold_out' | t }}{% else %}{{ 'product.add_to_cart' | t }}{% endif %}</span>
     </button>
   </p>
+</div>
 </div>
