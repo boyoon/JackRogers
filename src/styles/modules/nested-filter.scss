@@ -36,6 +36,15 @@
 	top:2px;
 	right:0px;
 }
+.NestedFilter__top .NestedFilter__option:after{
+	content: url('../assets/down.svg');
+	position:absolute;
+	top:-1px;
+	right:0px;
+}
+.NestedFilter__top .active .NestedFilter__option:after{
+	content: url('../assets/up.svg');
+}
 .NestedFilter__value--style{
 	padding:0;
 }

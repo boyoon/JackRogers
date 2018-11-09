@@ -86,3 +86,15 @@
     padding: 0 $gutter/4;
   }
 }
+
+.Header__search input{
+  height:25px;
+  width:150px;
+  border:0;
+  border-bottom:1px solid black;
+  border-radius:0;
+  font-size: .68rem;
+  font-family:'Brandon-Reg';
+  height:16px;
+  padding:0 10px;
+}

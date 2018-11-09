@@ -20,6 +20,10 @@
 	font-family:'Brandon-reg';
 	text-align:center;
 }
+.ProductSlider .Product__new--exists{
+	height:21px;
+	display:block;
+}
 .ProductSlider .button-container{
 	display:none;
 }
@@ -31,11 +35,21 @@
 	font-family:'Brandon-reg';
 	font-size:1rem;
 }
+.ProductSlider .ProductForm__values {
+	display:none;
+}
+.ProductSlider .Product__new{
+	display:block;
+	text-align:center;
+}
 .ProductSlider .collection-product a{
 	text-decoration:none;
 	text-transform:uppercase;
 	font-family:'Brandon-bold';
 	font-size:1rem;
+}
+.ProductSlider .CollectionProduct__detail-button{
+	display:none;
 }
 .ProductSlider--controls .next{
 	position:absolute;
@@ -70,6 +84,8 @@
 	.ProductSlider__description{
 		font-size:.75rem;
 		margin-bottom:10px;
+		max-width:200px;
+		margin:0 auto;
 	}
 	.ProductSlider--controls{
 		@include flex();

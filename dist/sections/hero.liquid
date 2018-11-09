@@ -1,5 +1,5 @@
-
-<div class="Hero__container js-hero s-hide">
+<div class="Hero">
+<div class="Hero__container js-heroDesktop js-hero s-hide">
 	{% for block in section.blocks %}
     <div class="Hero__image" style="background-image: url('{{block.settings.hero_image | img_url:'master'}}'); background-position: 50% {{block.settings.vertical_position}};">
       <!-- output block content -->
@@ -17,8 +17,14 @@
     </div>			
 	{% endfor %}
 </div>
+<div class="hero-controls s-hide">
+  <div class="next"><img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/hero-right.png?3509742628622821377"></div>
+  <div class="prev"><img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/hero-left.png?3509742628622821377"></div>
+</div>
+</div>
 
-<div class="Hero__container Hero__container--mobile l-hide m-hide {% if section.settings.enable %} js-hero {% endif %}">
+<div class="Hero__mobile l-hide m-hide">
+<div class="Hero__container Hero__container--mobile l-hide m-hide {% if section.settings.enable %} js-heroMobile {% endif %}">
   {% for block in section.blocks %}
     <div class="Hero__slider--mobile">
     <div class="Hero__image">
@@ -35,11 +41,18 @@
   {% endfor %}
 </div>
 
+<div class="{% if section.settings.enable %} {%else %} s-hide  {% endif %} hero-controls--mobile">
+  <div class="next"><img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/hero-right.png?3509742628622821377"></div>
+  <div class="prev"><img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/hero-left.png?3509742628622821377"></div>
+</div>
+</div>
+
 
 <style>
   .Hero__text--main{
     color:{{section.settings.title_color}};
     font-size: {{section.settings.title_size}}px;
+    line-height: {{section.settings.title_size}}px;
   }
   .Hero__text--sub{
     color:{{section.settings.title_color_2}};
@@ -48,6 +61,7 @@
   @media screen and (max-width:600px){
     .Hero__text--main{
       font-size:{{section.settings.title_size_mobile}}px;
+    line-height: {{section.settings.title_size_mobile}}px;
     }
     .Hero__text--sub{
       font-size: {{section.settings.title_size_2_mobile}}px;
@@ -145,12 +159,14 @@
       {
         "id":"updown",
         "type":"text",
-        "label":"Vertical Position Image (Numerical Value Only)"
+        "label":"Vertical Position Image (Numerical Value Only)",
+        "default": "50"
       },
       {
         "id":"leftright",
         "type":"text",
-        "label":"Horizontal Position Image (Numerical Value Only)"
+        "label":"Horizontal Position Image (Numerical Value Only)",
+        "default": "50"
       },
       {
         "type":"header",
@@ -197,9 +213,17 @@
 
 {% javascript %}
 //Initalize Hero Slider 
-  $('.js-hero').slick({
+  $('.js-heroDesktop').slick({
     nextArrow: $('.hero-controls .next'),
     prevArrow: $('.hero-controls .prev'),
+    dots: true,
+    arrows: true,
+    autoplaySpeed: 5000,
+    autoplay: true,
+  });
+  $('.js-heroMobile').slick({
+    nextArrow: $('.hero-controls--mobile .next'),
+    prevArrow: $('.hero-controls--mobile .prev'),
     dots: true,
     autoplaySpeed: 5000,
     autoplay: true,

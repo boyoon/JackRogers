@@ -21,14 +21,24 @@
     </a>
   {% endif %}
 
-
+{% assign test = 0 %}
+{% assign exists = false %}
     {% for tag in product.tags %}
     {% if tag contains 'new' %}
     <span class="Product__new">New!</span>
+    {% assign exists = true %}
     {% endif %}
     {% endfor %}
+    {% if exists == false %}
+    <span class="Product__new--exists"></span>
+    {% endif %}
+    {% for prod in collections.all.products %}
+    {% if product.title == prod.title and product.type == prod.type and product.metafields.c_f.product_material == prod.metafields.c_f.product_material %}
+    {% assign test = test | plus: 1 %}
+    {%endif%}
+    {% endfor %}
 
-
+    <p class="hidden CollectionProduct__number">{{test}} Colors</p>
   <ul class="ProductForm__values ProductForm__values--color">
     {% for prod in collections.all.products %}
       {% if product.title == prod.title and product.type == prod.type and product.metafields.c_f.product_material == prod.metafields.c_f.product_material %}

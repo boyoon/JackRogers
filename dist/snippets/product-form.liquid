@@ -25,7 +25,7 @@
     {% for prod in collections.all.products %}
       {% if product.title == prod.title and product.type == prod.type and product.metafields.c_f.product_material == prod.metafields.c_f.product_material %}
         <li>
-          <a href="{{prod.url}}" class="ProductForm__value ProductForm__value--color {% if product.url == prod.url %}active{% endif %}" style="background-color: {{prod.metafields.color.swatch}}" title="{{prod.metafields.c_f.colorway}}"></a>
+          <a href="{{prod.url}}" class="ProductForm__value ProductForm__value--color {{prod.metafields.color.swatch}} {% if product.url == prod.url %}active{% endif %}" style="background-color: {{prod.metafields.color.swatch}}" title="{{prod.metafields.c_f.colorway}}"></a>
         </li>
       {% endif %}
     {% endfor %}

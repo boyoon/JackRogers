@@ -25,6 +25,7 @@
 	font-family:'Brandon-reg';
 	text-transform:uppercase;
 	margin-bottom:0;
+	line-height:21px;
 	text-align:center;
 }
 .FeaturedCollection__text p{
@@ -36,6 +37,9 @@
 .FeaturedCollection__url{
 	text-decoration:none;
 }
+.FeaturedCollection__border{
+	display:none;
+}
 @include s(){
 	.FeaturedCollection__title{
 		font-size:.875rem;
@@ -45,5 +49,11 @@
 	}
 	.FeaturedCollection__text p{
 		font-size:.5625rem;
+	}
+	.FeaturedCollection__border{
+		display:block;
+		border-top:1px solid #979797;
+		margin-right:15px;
+		margin-left:15px;
 	}
 }

@@ -35,7 +35,7 @@
   </div>
   
 
-  <div class="column l9 s12">
+  <div class="column l9 s12 NestedCollection__product-side">
   {% for block in section.blocks %}
     {% assign collection = collections[block.settings.collection] %}
     {% if block.settings.image %}{% assign hasImage = true %}{% else %}{% assign hasImage = false %}{% endif %}
@@ -46,7 +46,7 @@
             <div class="NestedCollection__collection__heading-container">
             {% if collection.image %}
               <picture>
-                <source media="(max-width: 600px)" srcset="{{block.settings.image_picker | img_url:'master'}}">
+                <source media="(max-width: 600px)" srcset="{{block.settings.image | img_url:'master'}}">
                 <img class="NestedCollection__collection__image" src="{{collection.image | img_url:'master'}}" alt="{{collection.featured_image.alt}}">
               </picture>
               <div class="NestedCollection__collection__title-container">

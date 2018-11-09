@@ -121,6 +121,7 @@ a.Footer__contact-button{
 	text-decoration:none;
 	padding:0 5px;
 	border-left:1px solid black;
+	letter-spacing:1.2px;
 }
 .Footer__linklist:first-child{
 	border:0;
@@ -167,8 +168,18 @@ a.Footer__contact-button{
 	.Footer__subscribe--text{
 		text-align:center;
 	}
+	.Footer__border{
+		display:none;
+	}
 }
 @include s(){
+	.Footer__border{
+		display:block;
+		border-top:1px solid #9B9B9B;
+		margin-left:15px;
+		margin-right:15px;
+
+	}
 	.theme-footer .container.center{
 		margin-bottom:0px;
 	}
@@ -182,6 +193,10 @@ a.Footer__contact-button{
 	}
 	.accordion.active p:after{
 		content:'-';
+	}
+	.Footer__email input[type="email"]{
+		margin-left:0;
+    max-width: 180px;
 	}
 	.panel{
 		display:none;

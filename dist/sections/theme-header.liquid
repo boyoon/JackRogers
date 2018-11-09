@@ -7,6 +7,12 @@
     <div class="row flex v-end h-space-between">
       
       <div class="Header__icons column l12 m12 s12 s-center right">
+
+          {% if enable_search %}
+          <span class="Header__search">
+          {% include 'form-search' %}
+          </span>
+          {% endif %}
         <a href="" class="Search">{% include 'icon' with 'search' %}</a>
         {% if customer %}
           <a href="/account" data-trigger="popup" data-target="#PopupAccount">
@@ -44,14 +50,8 @@
       <div class="column left">
         {% include 'theme-nav-main' %}
       </div>
-    {% comment %}
 
-      {% if enable_search %}
-        <div class="column right">
-          {% include 'form-search' %}
-        </div>
-      {% endif %}
-    {% endcomment %}
+
       
     </div>
 
@@ -80,7 +80,12 @@
     </div>
   </div>
 </header>
-
+<script>
+  $(".theme-header .Search").click(function (e) {
+    e.preventDefault();
+      $(this).closest('.Header__icons').find('.Header__search').show("slide", { direction: "left" }, 1000);
+    });
+</script>
 
 
 

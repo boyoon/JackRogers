@@ -1,6 +1,9 @@
 .NestedCollection .container.l{
 	width:1540px;
 }
+.NestedFilter__value.active{
+	font-weight:bold;
+}
 .NestedCollection__banner{
 	@include flex();
 	align-items:center;
@@ -22,6 +25,9 @@
 	width:100%;
 	padding:0 15px;
 }
+.NestedCollection__collection{
+	padding-left:44px;
+}
 .NestedCollection__banner .NestedCollection__header h1{
 	font-size:2.8125rem;
 	font-family:'Brandon-Reg';
@@ -36,9 +42,14 @@
 }
 .NestedCollection .CollectionProduct__column{
   width:100%;
+  padding:0 15px;
+  margin-bottom:30px;
 }
 .NestedCollection .button-container{
 	display:none;
+}
+.NestedCollection__product-side{
+	border-left:1px solid #D2D2D2;
 }
 @media screen and (max-width:1000px){
 	.NestedCollection__banner picture{
@@ -126,6 +137,10 @@
 	display:block;
 	margin-bottom:5px;
 }
+.NestedCollection .NestedCollection__filter-container .BorderBottom{
+	justify-content:flex-end;
+	padding-right:22px;
+}
 .NestedCollection__grid-cell-product:hover{
 	.CollectionProduct__detail-button{
 		opacity:1;
@@ -181,5 +196,30 @@
 	}
 	.NestedCollection .CollectionProduct__price{
 		font-size:.625rem;
+	}
+	.NestedCollection__collection{
+		padding-left:0;
+	}
+	.NestedCollection .CollectionProduct__detail-button{
+		display:none;
+	}
+	.NestedCollection__grid-cell-product:hover{
+		.CollectionProduct__detail-button{
+			display:none;
+		}
+		.CollectionProduct__wrapper{
+			border:1px solid #D2D2D2;
+			z-index:1;
+			position:relative;
+		}
+		.ProductForm__values--color{
+			display:none;
+		}
+		.CollectionProduct__text-container{
+			display:block;
+		}
+	}
+	.NestedCollection .NestedCollection__filter-container .BorderBottom{
+		padding-right:0;
 	}
 }

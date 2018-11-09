@@ -6,6 +6,7 @@
 .Hero__text--main{
 	text-transform:uppercase;
 	font-size:2.8125rem;
+	margin-bottom:10px;
 }
 .Hero__text--sub{
 	font-size:1.125rem;
@@ -43,6 +44,21 @@
 	text-align:center;
 	width:100%;
 }
+.Hero{
+	position:relative;
+}
+.Hero .next{
+	transform:translate(-10px, -50%);
+	top:50%;
+	right:10px;
+	position:absolute;
+}
+.Hero .prev{
+	transform:translate(10px, -50%);
+	top:50%;
+	left:10px;
+	position:absolute;
+}
 @include s(){
 	.Hero__image{
 		height:auto;
@@ -53,5 +69,30 @@
 	.Hero__slider--mobile .Hero__text-block{
 		text-align:center;
 		padding:25px 15px;
+	}
+	.Hero__text--main{
+		margin-bottom:0;
+	}
+	.Hero__text--sub{
+		margin-bottom:0;
+	}
+	.Hero .next{
+		transform:translate(-10px, -25%);
+		top:25%;
+		right:10px;
+		position:absolute;
+	}
+	.Hero a.Hero__btn{
+		border:0;
+	}
+	.Hero .prev img,
+	.Hero .next img{
+		width:16px;
+	}
+	.Hero .prev{
+		transform:translate(10px, -25%);
+		top:25%;
+		left:10px;
+		position:absolute;
 	}
 }

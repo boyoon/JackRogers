@@ -1,12 +1,14 @@
 .PromoBar{
 }
-
 .PromoBar__text p{
-	font-family:'Brandom-Med';
+	font-family:'Brandom-Reg';
 	font-size:.5rem;
 	height:30px;
 	line-height:30px;
 }
 .PromoBar__text b{
 	font-family:'Brandon-Bold';
+}
+.PromoBar .break{
+	margin:0 5px;
 }
