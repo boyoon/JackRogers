@@ -12,6 +12,8 @@ class NestedFilter{
     this.colors = {};
     this.materials = [];
     this.styles = [];
+    this.featured = [];
+    this.collection = [];
     this.activeFilters = [];
 
 
@@ -27,14 +29,15 @@ class NestedFilter{
   getAllFilterData(){
     let product = {};
     {% for block in section.blocks %}
+      {% if block.type == 'collection' %}
       {% assign collection = collections[block.settings.collection] %}
       this.styles.push('{{collection.title}}');
       {% for product in collection.products %}
-        this.colors["{{product.metafields.c_f.colorway}}"]="{{product.metafields.c_f.color_swatch}}";
+        this.colors["{{product.metafields.color.swatch}}"]="{{product.metafields.color.swatch}}";
 
         product = {
           id:"{{product.id}}",
-          color:"{{product.metafields.c_f.colorway}}",
+          color:"{{product.metafields.color.swatch}}",
           style:"{{collection.title}}",
           size:[],
           height:[],
@@ -70,7 +73,103 @@ class NestedFilter{
         {% endfor %}
         this.products.push(product);
       {% endfor %}
+
+      {% elsif block.type == 'featured_collection' %}
+        {% assign collection = collections[block.settings.collection_2] %}
+        this.featured.push('{{collection.title}}');
+        {% for product in collection.products %}
+          this.colors["{{product.metafields.color.swatch}}"]="{{product.metafields.color.swatch}}";
+
+          product = {
+            id:"{{product.id}}",
+          color:"{{product.metafields.color.swatch}}",
+            style:"{{collection.title}}",
+            size:[],
+            height:[],
+            material:''
+          };
+          
+          //Getting Available Sizes for Product
+          {% for variant in product.variants %}
+            {% if variant.available %}
+            {% assign size = variant.option1 | split:' ' | last %}
+            product.size.push({{size | plus: 0 }});
+            if(this.sizes.indexOf({{size | plus: 0 }}) === -1){
+              this.sizes.push({{size | plus: 0 }})
+            }
+            {% endif %}
+          {% endfor %}
+
+          {% for tag in product.tags %}
+            {% if tag contains 'style:' %}//should be height
+              {% assign styleTag = tag | split:'style: ' | last %}
+              product.height.push('{{styleTag}}');
+              if(this.heights.indexOf('{{styleTag}}') === -1){
+                this.heights.push('{{styleTag}}')
+              }
+            {% endif %}
+            {% if tag contains 'material:' %}
+              {% assign materialTag = tag | split:'material: ' | last %}
+              product.material = '{{ materialTag }}';
+              if(this.materials.indexOf('{{materialTag}}') === -1){
+                this.materials.push('{{materialTag}}')
+              }
+            {% endif %}
+          {% endfor %}
+          this.products.push(product);
+        {% endfor %} 
+
+      {% elsif block.type == 'sub_collection' %}
+        {% assign collection = collections[block.settings.collection_3] %}
+        this.featured.push('{{collection.title}}');
+        {% for product in collection.products %}
+          this.colors["{{product.metafields.color.swatch}}"]="{{product.metafields.color.swatch}}";
+
+          product = {
+            id:"{{product.id}}",
+          color:"{{product.metafields.color.swatch}}",
+            style:"{{collection.title}}",
+            size:[],
+            height:[],
+            material:''
+          };
+          
+          //Getting Available Sizes for Product
+          {% for variant in product.variants %}
+            {% if variant.available %}
+            {% assign size = variant.option1 | split:' ' | last %}
+            product.size.push({{size | plus: 0 }});
+            if(this.sizes.indexOf({{size | plus: 0 }}) === -1){
+              this.sizes.push({{size | plus: 0 }})
+            }
+            {% endif %}
+          {% endfor %}
+
+          {% for tag in product.tags %}
+            {% if tag contains 'style:' %}//should be height
+              {% assign styleTag = tag | split:'style: ' | last %}
+              product.height.push('{{styleTag}}');
+              if(this.heights.indexOf('{{styleTag}}') === -1){
+                this.heights.push('{{styleTag}}')
+              }
+            {% endif %}
+            {% if tag contains 'material:' %}
+              {% assign materialTag = tag | split:'material: ' | last %}
+              product.material = '{{ materialTag }}';
+              if(this.materials.indexOf('{{materialTag}}') === -1){
+                this.materials.push('{{materialTag}}')
+              }
+            {% endif %}
+          {% endfor %}
+          this.products.push(product);
+        {% endfor %} 
+
+
+      {% endif %}
+
     {% endfor %}
+  
+
   }
 
   populateFilterValues(){
@@ -96,7 +195,7 @@ class NestedFilter{
 
     //Add Colors
     _.forIn(this.colors,function(hex, colorName){
-      let colorValue = '<li class="NestedFilter__value-container--color"><button class="NestedFilter__value NestedFilter__value--color js-filterValue" type="button" value="color_'+colorName+'" style="background-color:'+hex+'"></button></li>';
+      let colorValue = '<li class="NestedFilter__value-container--color"><button class="NestedFilter__value NestedFilter__value--color js-filterValue" type="button" value="color_'+colorName+'" style="">'+colorName+'</button></li>';
       colorValues.append(colorValue);
     });
 
@@ -110,8 +209,9 @@ class NestedFilter{
     let windowWidth = $(window).width();
     let filterValuesContainer = '.NestedFilter__values-container';
     if(windowWidth <= 600){
+      $(filterValuesContainer).width(windowWidth);
       $(filterValuesContainer+':odd').each(function(){
-
+        $(this).css('left','-' + windowWidth/2 + 'px');
       });
     }
   }
@@ -146,9 +246,9 @@ class NestedFilter{
     if($(window).width() > 600){
       let margin = $('.js-valuesContainer--'+activeOption).height();
       if(activeOption === ''){
-        $('.js-filterContainer').css('margin-bottom', '50px');
+        //$('.js-filterContainer').css('margin-bottom', '50px');
       }else{
-        $('.js-filterContainer').css('margin-bottom', (margin + 50)+'px');
+        //$('.js-filterContainer').css('margin-bottom', (margin + 0)+'px');
       }
     }
 
@@ -161,6 +261,7 @@ class NestedFilter{
     this.updateFilter(value);
     this.updateProducts();
     this.updateStyleSections();
+    this.updateFilterSelections();
     window.scrollBy(0,1);
   }
 
@@ -168,7 +269,6 @@ class NestedFilter{
     let selectedValue = selected;
     let selectedOption = selectedValue.split('_')[0];
     let activeFilters = this.activeFilters;
-
     if(_.isEmpty(activeFilters)){
       activeFilters.push(selectedValue);
     }else{
@@ -177,7 +277,15 @@ class NestedFilter{
           _.remove(activeFilters, function(filter){
             return filter === selectedValue;
           });
-        }else{
+        }
+        else if (selectedOption === 'collection' ){
+          if(_.includes(activeFilters, selectedValue)){
+            _.remove(activeFilters, function(filter){
+              return filter === selectedValue;
+            });          
+          }
+        }
+        else{
           activeFilters.push(selectedValue);
         }
       }else{//Allows only one selection within that option
@@ -219,17 +327,17 @@ class NestedFilter{
       _.each(activeFilters, function(filter){
         let option = $('.js-filterOption[value="'+filter.split('_')[0]+'"]');
         $('.js-filterValue[value="'+filter+'"]').addClass('active');
-        option.hide();
-        option.after('<button class="ActiveFilters__value js-activeFilter" type="button" value="'+filter+'">'+filter.split('_')[1]+'</button>');
+        //option.hide();
+        //option.after('<button class="ActiveFilters__value js-activeFilter" type="button" value="'+filter+'">'+filter.split('_')[1]+'</button>');
       });
 
       this.activeOption = '';
-      $('.js-optionContainer').removeClass('active');
+      //$('.js-optionContainer').removeClass('active');
     }else{
       activeFiltersDOM.empty();
       _.each(activeFilters, function(filter){
         $('.js-filterValue[value="'+filter+'"]').addClass('active');
-        activeFiltersDOM.append('<li><button class="ActiveFilters__value js-activeFilter" type="button" value="'+filter+'">'+filter.split('_')[1]+'</button></li>');
+        //activeFiltersDOM.append('<li><button class="ActiveFilters__value js-activeFilter" type="button" value="'+filter+'">'+filter.split('_')[1]+'</button></li>');
       });
     }
 
@@ -247,28 +355,33 @@ class NestedFilter{
       filter.activeFilters = activeFilters;
       filter.updateProducts();
       filter.updateStyleSections();
+      filter.updateFilterSelections();
     });
   }
 
   updateProducts(){
     let activeFilters = this.activeFilters;
     let products = this.products;
-
     let validProducts = _.filter(this.products, function(product){
       let style = false;
       let nostyles = true; //Stays true if none of the style filters were selected
       let options = true;
-
+      let featured = false;
+      let nofeatured = true;
+      let styleExists = false;
       _.each(activeFilters, function(filter){
+
         let filterOption = filter.split('_')[0];
         let filterValue = filter.split('_')[1];
-
-        if(filterOption === 'style'){
+        console.log(product[filterOption]);
+        if(filterOption === 'style' ){
           nostyles = false;
+          styleExists = true;
           if(product[filterOption] === filterValue){
             style = true;
           }
-        }else{
+        }
+        else{
           if(filterOption === 'size'){
             filterValue = parseFloat(filterValue);
           }
@@ -286,6 +399,8 @@ class NestedFilter{
         }
       });
 
+
+
       return (style || nostyles) && options;
     });
 
@@ -297,6 +412,37 @@ class NestedFilter{
     this.filteredProducts = validProducts;
   }
 
+
+  updateFilterSelections(){
+    //Style DOM Classes
+    let styleContainer = '.js-nestedContainer-2';
+    let styleInfo = '.js-collectionInfo-2';
+    let styleImage = '.js-collectionImage';
+    let styles = this.featured;
+    let filteredProducts = this.filteredProducts;
+
+    let activeStyles = [];
+    _.each(filteredProducts,function(product){
+      let productStyle = product.style;
+      if(!_.includes(activeStyles, productStyle)){
+        activeStyles.push(productStyle);
+      }
+    });
+
+    let stylesToHide = _.filter(styles,function(style){
+      return !_.includes(activeStyles,style);
+    })
+    
+
+    $(styleInfo).show();
+    $(styleImage).show();
+    $(styleContainer).removeClass('inactive');
+    _.each(stylesToHide, function(style){
+      $(styleInfo+'[data-style="'+style+'"]').hide();
+      $(styleImage+'[data-style="'+style+'"]').hide();
+      $(styleContainer+'[data-style="'+style+'"]').addClass('inactive');
+    });
+  }
   updateStyleSections(){
     //Style DOM Classes
     let styleContainer = '.js-nestedContainer';
@@ -328,7 +474,6 @@ class NestedFilter{
     });
   }
 }
-
 
 const Filter = new NestedFilter();
 Filter.initFilter();

@@ -1,6 +1,6 @@
 <div class="Hero">
 <div class="Hero__container js-heroDesktop js-hero s-hide">
-	{% for block in section.blocks %}
+  {% for block in section.blocks %}
     <div class="Hero__image" style="background-image: url('{{block.settings.hero_image | img_url:'master'}}'); background-position: 50% {{block.settings.vertical_position}};">
       <!-- output block content -->
       {% if block.settings.hero_maintext_line_1 != '' %}
@@ -14,8 +14,8 @@
         </div>
       </div>
       {% endif %}
-    </div>			
-	{% endfor %}
+    </div>      
+  {% endfor %}
 </div>
 <div class="hero-controls s-hide">
   <div class="next"><img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/hero-right.png?3509742628622821377"></div>

@@ -1,7 +1,10 @@
 <!-- sections/theme-promobar.liquid -->
 <div class="PromoBar">
   <div class="PromoBar__text">
-    <p>{{section.settings.title}}</p>
+    <p>{{section.settings.title}}
+    {% if section.settings.title_2 != '' %}<span class="break">|</span>{%endif %}
+    <span>{{section.settings.title_2}}</span>
+    </p>
   </div>
 </div>
 
@@ -36,6 +39,11 @@
       {
         "type": "text",
         "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "title_2",
         "label": "Title"
       }
     ]

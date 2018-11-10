@@ -124,6 +124,10 @@ $('.js-sizeVariantButton').click(function(e){
 $('.js-productAdd').click(function(){
   var quantitys = $('.quantity-adjust input').val();
   $(this).attr('data-cart-quantity', quantitys);
+  $(document).on('cart.requestComplete', function(event, cart){
+
+  location.href = "https://jackrogersusa.myshopify.com/cart";
+  });
 });
 
 $('.Product__thumbnail--slider').slick({

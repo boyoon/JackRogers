@@ -40,13 +40,16 @@
 
     <p class="hidden CollectionProduct__number">{{test}} Colors</p>
   <ul class="ProductForm__values ProductForm__values--color">
+    {% paginate collections.all.products by 1000 %}
     {% for prod in collections.all.products %}
-      {% if product.title == prod.title and product.type == prod.type and product.metafields.c_f.product_material == prod.metafields.c_f.product_material %}
+
+      {% if product.title == prod.title%}
         <li>
-          <a href="{{prod.url}}" class="ProductForm__value ProductForm__value--color {% if product.url == prod.url %}active{% endif %}" style="background-color: {{prod.metafields.color.swatch}}" title="{{prod.metafields.c_f.colorway}}"></a>
+          <a href="{{prod.url}}" class="ProductForm__value asdasd ProductForm__value--color {% if product.url == prod.url %}active{% endif %}" style="background-color: {{prod.metafields.color.swatch}}" title="{{prod.metafields.c_f.colorway}}"></a>
         </li>
       {% endif %}
     {% endfor %}
+    {% endpaginate %}
   </ul>
   <p class="CollectionProduct__text-container">
 

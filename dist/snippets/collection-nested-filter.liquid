@@ -1,9 +1,11 @@
 <ul class="NestedFilter js-nestedFilter NestedFilter__top">
   <li class="NestedFilter__option-container js-optionContainer js-optionContainer-style">
+
     <button class="NestedFilter__option js-filterOption" type="button" value="style">Category</button>
     <div class="NestedFilter__values-container js-valuesContainer--style">
       <ul class="NestedFilter__values  js-filter js-filterStyles">
         {% for block in section.blocks %}
+          {% if block.type =='collection'%}
           {% assign collection = collections[block.settings.collection] %}
           <li class="NestedFilter__value-container--style">
           <button class="NestedFilter__value NestedFilter__value--style js-filterValue" type="button" value="style_{{collection.title}}">
@@ -11,6 +13,45 @@
             <div>{{collection.title}}</div>
           </button>
           </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </li>
+
+    <li class="NestedFilter__option-container js-optionContainer js-optionContainer-featured">
+    <button class="NestedFilter__option js-filterOption" type="button" value="featured">Featured</button>
+    <div class="NestedFilter__values-container js-valuesContainer--featured">
+      <ul class="NestedFilter__values  js-filter js-filterFeatureds">
+        {% for block in section.blocks %}
+        {% if block.type == 'featured_collection' %}
+          {% assign collection = collections[block.settings.collection_2] %}
+          <li class="NestedFilter__value-container--featured">
+          <button class="NestedFilter__value NestedFilter__value--style js-filterValue" type="button" value="style_{{collection.title}}">
+
+            <div>{{collection.title}}</div>
+          </button>
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </li>    
+
+  <li class="NestedFilter__option-container js-optionContainer js-optionContainer-collection">
+    <button class="NestedFilter__option js-filterOption" type="button" value="collection">Collection</button>
+    <div class="NestedFilter__values-container js-valuesContainer--collection">
+      <ul class="NestedFilter__values  js-filter js-filterCollections">
+        {% for block in section.blocks %}
+        {% if block.type == 'sub_collection' %}
+          {% assign collection = collections[block.settings.collection_3] %}
+          <li class="NestedFilter__value-container--collection">
+          <button class="NestedFilter__value NestedFilter__value--style js-filterValue" type="button" value="style_{{collection.title}}">
+
+            <div>{{collection.title}}</div>
+          </button>
+          </li>
+          {% endif %}
         {% endfor %}
       </ul>
     </div>
@@ -19,22 +60,7 @@
 
 <ul class="NestedFilter NestedFilter__center">Refine By</ul>
 <ul class="NestedFilter js-nestedFilter NestedFilter__bottom">
-  <li class="NestedFilter__option-container js-optionContainer js-optionContainer-size">
-    <button class="NestedFilter__option js-filterOption" type="button" value="size">Size</button>
-    <div class="NestedFilter__values-container js-valuesContainer--size">
-      <ul class="NestedFilter__values  js-filter js-filterSizes">
-        
-      </ul>
-    </div>
-  </li>
-  <li class="NestedFilter__option-container js-optionContainer js-optionContainer-height">
-    <button class="NestedFilter__option js-filterOption" type="button" value="height">Height</button>
-    <div class="NestedFilter__values-container js-valuesContainer--height">
-      <ul class="NestedFilter__values  js-filter js-filterHeights">
-        
-      </ul>
-    </div>
-  </li>
+
   <li class="NestedFilter__option-container js-optionContainer js-optionContainer-color">
     <button class="NestedFilter__option js-filterOption" type="button" value="color">Color</button>
     <div class="NestedFilter__values-container js-valuesContainer--color">
@@ -43,12 +69,52 @@
       </ul>
     </div>
   </li>
+  <li class="NestedFilter__option-container js-optionContainer js-optionContainer-size">
+    <button class="NestedFilter__option js-filterOption" type="button" value="size">Size</button>
+    <div class="NestedFilter__values-container js-valuesContainer--size">
+      <ul class="NestedFilter__values  js-filter js-filterSizes">
+        
+      </ul>
+    </div>
+  </li>
   <li class="NestedFilter__option-container js-optionContainer js-optionContainer-material">
-    <button class="NestedFilter__option js-filterOption" type="button" value="material">Material</button>
+    <button class="NestedFilter__option js-filterOption" type="button" value="material">Shoe Type</button>
     <div class="NestedFilter__values-container js-valuesContainer--material">
       <ul class="NestedFilter__values  js-filter js-filterMaterials">
         
       </ul>
     </div>
   </li>
+  <li class="NestedFilter__option-container js-optionContainer js-optionContainer-height">
+    <button class="NestedFilter__option js-filterOption" type="button" value="height">Width</button>
+    <div class="NestedFilter__values-container js-valuesContainer--height">
+      <ul class="NestedFilter__values  js-filter js-filterHeights">
+        
+      </ul>
+    </div>
+  </li>
 </ul>
+
+<script>
+      $(window).on('load resize orientationchange', function() {
+        $('.js-filterStyles').each(function(){
+            var $carousel = $(this);
+            /* Initializes a slick carousel only on mobile screens */
+            // slick on mobile
+            if ($(window).width() > 600) {
+                if ($carousel.hasClass('slick-initialized')) {
+                    $carousel.slick('unslick');
+                }
+            }
+            else{
+                if (!$carousel.hasClass('slick-initialized')) {
+                    $carousel.slick({
+                        slidesToShow: 3,
+                        arrows:false,
+                        mobileFirst: true,
+                    });
+                }
+            }
+        });
+    });
+</script>

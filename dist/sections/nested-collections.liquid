@@ -37,6 +37,7 @@
 
   <div class="column l9 s12 NestedCollection__product-side">
   {% for block in section.blocks %}
+    {% if block.type =="collection" %}
     {% assign collection = collections[block.settings.collection] %}
     {% if block.settings.image %}{% assign hasImage = true %}{% else %}{% assign hasImage = false %}{% endif %}
     <div class="NestedCollection__container js-nestedContainer row" data-style="{{collection.title}}">
@@ -68,6 +69,74 @@
 
         </div>
     </div>
+
+    {% elsif block.type == "featured_collection" %}
+    {% assign collection = collections[block.settings.collection_2] %}
+    {% if block.settings.image %}{% assign hasImage = true %}{% else %}{% assign hasImage = false %}{% endif %}
+    <div class="NestedCollection__container js-nestedContainer-2 row" data-style="{{collection.title}}">
+      <div class="NestedCollection__collection NestedCollection__grid">
+        <div class="row NestedCollection__grid-cell NestedCollection__grid-cell-info js-collectionInfo-2" data-style="{{collection.title}}">
+          <div class="NestedCollection__collection__info">
+            <div class="NestedCollection__collection__heading-container">
+            {% if collection.image %}
+              <picture>
+                <source media="(max-width: 600px)" srcset="{{block.settings.image | img_url:'master'}}">
+                <img class="NestedCollection__collection__image" src="{{collection.image | img_url:'master'}}" alt="{{collection.featured_image.alt}}">
+              </picture>
+              <div class="NestedCollection__collection__title-container">
+                <h2 class="NestedCollection__collection__title h1 Link--partial-accent">{{collection.title}}</h2>
+                <p class="NestedCollection__collection__body">{{collection.description}}</p>
+              </div>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+        <div class="row NestedCollection__row">
+        {% for product in collection.products %}
+          <div id="Product-{{product.id}}" class="NestedCollection__grid-cell NestedCollection__grid-cell-product js-collectionProduct">
+            {% include 'collection-product' %}
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </div>     
+
+    {% elsif block.type == "sub_collection" %}
+    {% assign collection = collections[block.settings.collection_3] %}
+    {% if block.settings.image %}{% assign hasImage = true %}{% else %}{% assign hasImage = false %}{% endif %}
+    <div class="NestedCollection__container js-nestedContainer-2 row" data-style="{{collection.title}}">
+      <div class="NestedCollection__collection NestedCollection__grid">
+        <div class="row NestedCollection__grid-cell NestedCollection__grid-cell-info js-collectionInfo-2" data-style="{{collection.title}}">
+          <div class="NestedCollection__collection__info">
+            <div class="NestedCollection__collection__heading-container">
+            {% if collection.image %}
+              <picture>
+                <source media="(max-width: 600px)" srcset="{{block.settings.image_3 | img_url:'master'}}">
+                <img class="NestedCollection__collection__image" src="{{collection.image | img_url:'master'}}" alt="{{collection.featured_image.alt}}">
+              </picture>
+              <div class="NestedCollection__collection__title-container">
+                <h2 class="NestedCollection__collection__title h1 Link--partial-accent">{{collection.title}}</h2>
+                <p class="NestedCollection__collection__body">{{collection.description}}</p>
+              </div>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+        <div class="row NestedCollection__row">
+        {% for product in collection.products %}
+          <div id="Product-{{product.id}}" class="NestedCollection__grid-cell NestedCollection__grid-cell-product js-collectionProduct">
+            {% include 'collection-product' %}
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </div>     
+
+
+
+    {% endif %}   
   {% endfor %}
   </div>
   </div>
@@ -114,7 +183,7 @@
   "blocks":[
     {
       "type":"collection",
-      "name":"Collection",
+      "name":"Category",
       "settings": [
         {
           "type":"collection",
@@ -127,6 +196,38 @@
           "label": "Image"
         }
       ]
+    },
+    {
+      "type":"featured_collection",
+      "name":"Featured Collection",
+      "settings": [
+        {
+          "type":"collection",
+          "id":"collection_2",
+          "label":"Collection"
+        },
+        {
+          "id": "image_2",
+          "type": "image_picker",
+          "label": "Image"
+        }
+      ]      
+    },
+    {
+      "type":"sub_collection",
+      "name":"Collection",
+      "settings": [
+        {
+          "type":"collection",
+          "id":"collection_3",
+          "label":"Collection"
+        },
+        {
+          "id": "image_3",
+          "type": "image_picker",
+          "label": "Image"
+        }
+      ]      
     }
   ]
 }

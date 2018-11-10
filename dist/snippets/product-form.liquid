@@ -22,6 +22,7 @@
   <div class="ProductForm__color">
   <h2>Color</h2>
   <ul class="ProductForm__values ProductForm__values--color">
+    {% paginate collections.all.products by 1000 %}
     {% for prod in collections.all.products %}
       {% if product.title == prod.title and product.type == prod.type and product.metafields.c_f.product_material == prod.metafields.c_f.product_material %}
         <li>
@@ -29,6 +30,7 @@
         </li>
       {% endif %}
     {% endfor %}
+    {% endpaginate %}
   </ul>
   </div>
     {% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
