@@ -70,6 +70,17 @@
       </div>
       <div class="column s3 Header__icon--search">        
         <a href="" class="Search">{% include 'icon' with 'search' %}</a>
+        {% comment %}
+        {% if customer %}
+          <a href="/account" data-trigger="popup" data-target="#PopupAccount">
+          {% include 'icon' with 'login' %}</a>
+        {% else %}
+          <a href="/account">
+          {% include 'icon' with 'login' %}</a>
+        {% endif %}
+
+        <a href="" class="Wishlist">{% include 'icon' with 'wishlist' %}</a>
+        {% endcomment %}
         <a href="/cart" id="CartLink" data-trigger="popup" data-target="#PopupCart" aria-controls="Cart" aria-expanded="false" class="Header__cart v-middle">
           {% include 'icon' with 'cart' %}
           {%comment%}<span data-cart-item-count>{{ cart.item_count }}</span>

@@ -20,7 +20,7 @@
 {% endunless %}
 
 <span class="icon icon-{{ icon }}" aria-hidden="true">
-  <svg xmlns="http://www.w3.org/2000/svg" class="{{ icon }}" aria-label="{{ name }}" role="img"{% unless size == 'auto' %} width="{{ size }}" height="{{ size }}"{% endunless %}{% unless viewbox == false %} viewbox="{% if viewbox != blank %}{{ viewbox }}{% else %}0 0 32 32{% endif %}"{% endunless %}>
+  <svg xmlns="http://www.w3.org/2000/svg" class="{{ icon }}" aria-label="{{ name }}" role="img"{% unless size == 'auto' %} width="{{ size }}" height="16"{% endunless %}{% unless viewbox == false %} viewbox="{% if viewbox != blank %}{{ viewbox }}{% else %}0 0 32 16{% endif %}"{% endunless %}>
     <title>{{ name }}</title>
     <desc>{{ name }} {{ 'common.icon' | t | downcase }}</desc>
     {%- case icon -%}

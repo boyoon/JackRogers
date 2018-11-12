@@ -147,6 +147,9 @@ a.Footer__contact-button{
 .theme-footer .container.center{
 	margin-bottom:30px;
 }
+.Footer__border{
+	display:none;
+}
 @media screen and (max-width:1416px){
 	.Footer__email.column.l6{
 		width:100%;
@@ -171,17 +174,23 @@ a.Footer__contact-button{
 	.Footer__border{
 		display:none;
 	}
+	.Footer__top{
+	    box-shadow: 0 -2px 4px rgba(0,0,0,0.1194);
+    	padding-top: 20px;
+	}
 }
 @include s(){
 	.Footer__border{
 		display:block;
 		border-top:1px solid #9B9B9B;
-		margin-left:15px;
-		margin-right:15px;
+		margin-top:7px;
 
 	}
 	.theme-footer .container.center{
 		margin-bottom:0px;
+	}
+	.accordion{
+		cursor:pointer;
 	}
 	.accordion p{
 		margin-bottom:0;
@@ -200,5 +209,16 @@ a.Footer__contact-button{
 	}
 	.panel{
 		display:none;
+	}
+	.Footer .Footer__subscribe form#contact_form{
+		padding-bottom:0;
+	}
+	.Footer__social .column span{
+		display:block;
+		margin-right:0;
+		margin-bottom:5px;
+	}
+	.Footer__social .inline{
+		margin-left:16px;
 	}
 }

@@ -11,8 +11,8 @@
 {% assign form_show_button = section.settings.form_show_button %}
 
 <footer class="theme-footer" role="contentinfo">
-  <div class="container center">
-    <div class="row">
+  <div class="container center Footer__top">
+    <div class="row ">
       <div class="column l6 m12 s12 l-right v-middle Footer__email">
         {% if show_subscribe %}
  
@@ -34,6 +34,7 @@
         </div>
       </div>
     </div>
+    <hr class="Footer__border"></hr>
     <div class="Footer__contact--mobile">
       <div class="row">
       {% for block in section.blocks limit:1%}

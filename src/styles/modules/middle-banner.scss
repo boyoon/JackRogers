@@ -28,7 +28,6 @@
 	font-size:.8125rem;
 	font-family:"Brandon-Bold";
 }
-
 @include s(){
 	.MiddleBanner{
 		margin-top:0;
@@ -61,5 +60,11 @@
 		text-transform:uppercase;
 		font-size:.8125rem;
 		font-family:"Brandon-Bold";
+	}
+
+	.MiddleBanner .button{
+		height:25px;
+		line-height:25px;
+		margin-top:7px;		
 	}
 }

@@ -65,10 +65,12 @@
 }
 @include s-m(){
 	.ProductSlider .collection-product a{
-		font-size:.625rem;
+		font-size:.8rem;
+		line-height:.8rem;
 	}
 	.ProductSlider .collection-product p{
-		font-size:.625rem;
+		font-size:.8rem;
+		margin-bottom:5px;
 	}
 }
 @include s(){

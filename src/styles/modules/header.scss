@@ -37,6 +37,10 @@
 	margin-right: 37.5px;
 	text-decoration: none;
 }
+.Header__icon--mobile .Header__icon--search a{
+	margin:0 3px;	
+}
+
 .Header__icon--mobile .row.flex{
 	flex-flow:nowrap;
 }

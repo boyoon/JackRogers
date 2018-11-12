@@ -9,7 +9,7 @@
           <h2 class="Hero__text--main">{{block.settings.hero_maintext_line_1}}</h2>
           <h2 class="Hero__text--sub">{{block.settings.hero_maintext_line_2}}</h2>
           {% unless block.settings.hero_button_text == blank %}
-          <a href="{{block.settings.hero_url}}" class="Hero__btn btn button" style="color:{{block.settings.hero_button_font_color}}">{{block.settings.hero_button_text}}</a>
+          <a href="{{block.settings.hero_url}}" class="Hero__btn btn button">{{block.settings.hero_button_text}}</a>
           {% endunless %}
         </div>
       </div>
@@ -34,7 +34,7 @@
       <h2 class="Hero__text--main">{{block.settings.hero_maintext_line_1}}</h2>
       <h2 class="Hero__text--sub">{{block.settings.hero_maintext_line_2}}</h2>
       {% unless block.settings.hero_button_text == blank %}
-      <a href="{{block.settings.hero_url}}" class="Hero__btn btn button" style="color:{{block.settings.hero_button_font_color}}">{{block.settings.hero_button_text}}</a>
+      <a href="{{block.settings.hero_url}}" class="Hero__btn btn button" style="">{{block.settings.hero_button_text}}</a>
       {% endunless %}
     </div>
   </div>
@@ -57,6 +57,13 @@
   .Hero__text--sub{
     color:{{section.settings.title_color_2}};
     font-size: {{section.settings.title_size_2}}px;
+  }
+  .Hero__btn{
+    color:{{block.settings.hero_button_font_color}};
+    transition: all .5s;
+  }
+  .Hero__btn:hover{
+    color:white;
   }
   @media screen and (max-width:600px){
     .Hero__text--main{

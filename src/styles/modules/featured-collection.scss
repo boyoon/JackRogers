@@ -41,6 +41,9 @@
 	display:none;
 }
 @include s(){
+	.FeaturedCollection{
+		margin-top:0;
+	}
 	.FeaturedCollection__title{
 		font-size:.875rem;
 	}
@@ -55,5 +58,6 @@
 		border-top:1px solid #979797;
 		margin-right:15px;
 		margin-left:15px;
+		margin-top:0;
 	}
 }
