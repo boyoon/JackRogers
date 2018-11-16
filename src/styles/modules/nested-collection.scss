@@ -53,6 +53,9 @@
 .NestedCollection__product-side{
 	border-left:1px solid #D2D2D2;
 }
+.NestedCollection .CollectionProduct__column .ProductForm__values--color li:first-child{
+	border:1px solid black;
+}
 @media screen and (max-width:1000px){
 	.NestedCollection__banner picture{
 		display:none;
@@ -132,12 +135,18 @@
 }
 .NestedCollection .CollectionProduct__wrapper{
 	border:1px solid transparent;
+	min-height:410px;
+}
+.NestedCollection .CollectionProduct__wrapper a{
+	display:block;
+	margin:1px;
 }
 .NestedCollection .Product__new{
 	text-align: center;
 	font-size:.8125rem;
 	display:block;
 	margin-bottom:5px;
+	width:100%;
 }
 .NestedCollection .NestedCollection__filter-container .BorderBottom{
 	justify-content:flex-end;
@@ -180,6 +189,10 @@
 	}
 }
 @include s(){
+	.js-optionContainer-collection,
+	.js-optionContainer-featured{
+		display:none;
+	}
 	.NestedCollection__product-side{
 		border-left:0;
 		margin-top:35px;

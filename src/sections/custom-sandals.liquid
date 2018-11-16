@@ -1,0 +1,100 @@
+
+
+<div class="Custom__container--1">
+{% for block in section.blocks %}
+{% assign product = all_products[block.settings.product] %}
+	<div class="Custom__row" data-handle="{{product.handle}}">
+		{{product.title}}
+		<img src="{{product.featured_image | img_url:'master' }}">
+	</div>
+{% endfor %}
+</div>
+
+
+<div class="Custom__container--2">
+{% for block in section.blocks %}
+{% assign product = all_products[block.settings.product] %}
+	<div class="Custom__row Custom__step-2 s">
+		{% for tag in product.tags %}
+			{% if tag contains 'sandal-color' %}
+				{{tag | split:'_' | last }}
+			{% endif %}
+			{% if tag contains 'sandal-pattern' %}
+				{{tag | split: '_' | last}}
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endfor %}
+</div>
+
+
+<div class="Custom__container--3">
+{% for block in section.blocks %}
+{% assign product = all_products[block.settings.product] %}
+	<div class="Custom__row Custom__step-3">
+		{% for tag in product.tags %}
+			{% if tag contains 'whipstich' %}
+				{{ tag | split:'_' | last }}
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endfor %}
+</div>
+
+<div class="Custom__container--4">
+{% for block in section.blocks %}
+{% assign product = all_products[block.settings.product] %}
+	<div class="Custom__row Custom__step-4">
+		{% for tag in product.tas %}
+			{% if tag contains 'heel-color' %}
+				{{ tag }}
+			{% endif %}
+
+			{% if tag contains 'heel-pattern' %}
+				{{ tag }}
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endfor %}
+</div>
+
+
+
+
+
+
+
+{% schema %}
+{
+  "name": "Custom Sandal Page",
+  "class":"Custom",
+  "settings":[
+    {
+      "type":"text",
+      "id":"main_title",
+      "label":"Title"
+    }
+  ],
+  "blocks":[{
+    "type":"product",
+    "name":"Product",
+    "limit": 3,
+    "settings": [
+      {
+        "type":"header",
+        "content":"Product Item"
+      },
+      {
+        "id":"product",
+        "type":"product",
+        "label":"Select Product"
+      }
+    ]
+  }],
+  "presets":[{
+      "name": "Custom Sandals",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

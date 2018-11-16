@@ -23,6 +23,9 @@
 	font-size:.8125rem;
 	font-family:"Brandon-Bold";
 }
+.BottomBanner__text .button{
+	line-height:32px;
+}
 
 @include s(){
 	.BottomBanner{

@@ -13,12 +13,13 @@
 	font-size:1.125rem;
 	font-family:'Brandon-Reg';
 }
-.Hero__btn{
+.Hero .Hero__btn{
 	font-family:'Brandon-bold';
 	font-size:.8125rem;
 	font-weight:100;
 	margin:0 auto;
 	color:black;
+	line-height:32px;
 }
 .slick-dots{
 	display:flex;

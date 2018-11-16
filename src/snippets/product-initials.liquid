@@ -1,0 +1,127 @@
+<div class="accordion">4. Your Initials</div>
+<div class="panel">
+	<div class="InitialForm">
+		<input class="InitialForm__first js-first" type="text" maxlength="1" type="text" required>
+		<input class="InitialForm__second js-second" type="text" maxlength="1" type="text" required>
+		<input class="InitialForm__third js-third" type="text" maxlength="1" type="text" required>
+		<button class="js-submit">Preview Monogram</button>
+	</div>
+</div>
+
+<script>
+	var monogramLetters = [
+		//First Letter
+		{
+			a: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/A.png?10436166205336198244">',
+			b: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/B.png?10436166205336198244">',
+			c: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/C.png?10436166205336198244">',
+			d: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/D.png?10436166205336198244">',
+			e: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/E.png?10436166205336198244">',
+			f: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/F.png?10436166205336198244">',
+			g: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/G.png?10436166205336198244">',
+			h: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/H.png?10436166205336198244">',
+			i: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/I.png?10436166205336198244">',
+			j: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/J.png?10436166205336198244">',
+			k: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/K.png?10436166205336198244">',
+			l: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/L.png?10436166205336198244">',
+			m: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/M.png?10436166205336198244">',
+			n: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/N.png?10436166205336198244">',
+			o: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/O.png?10436166205336198244">',
+			p: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/P.png?10436166205336198244">',
+			q: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/Q.png?10436166205336198244">',
+			r: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/R.png?10436166205336198244">',
+			s: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/S.png?10436166205336198244">',
+			t: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/T.png?10436166205336198244">',
+			u: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/U.png?10436166205336198244">',
+			v: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/V.png?10436166205336198244">',
+			w: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/W.png?10436166205336198244">',
+			x: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/X.png?10436166205336198244">',
+			y: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/Y.png?10436166205336198244">',
+			z: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/Z.png?10436166205336198244">'
+		},
+		//Middle Letter
+		{
+			a: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/A_393906ce-6d44-4f94-ad86-540f4499ddd3.png?1621742486005683723">',
+			b: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/B_9b527a79-c83d-48ea-b66b-bde50625fb41.png?1621742486005683723">',
+			c: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/C_73e40bde-eb23-4dce-a951-042b745eb2f0.png?1621742486005683723">',
+			d: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/D_804cb9a7-04fd-4a98-9fef-21c20e075ecb.png?1621742486005683723">',
+			e: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/E_8a80f172-8c29-4996-b5fe-c22b38ccdbc6.png?1621742486005683723">',
+			f: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/F_47d93825-2bfa-445f-a94d-c2bd2678fc00.png?1621742486005683723">',
+			g: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/G_26825784-bbe0-4c3a-9cc0-d1305dedc7fb.png?1621742486005683723">',
+			h: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/H_041abce9-3946-4fe9-b139-6e6bab63e547.png?1621742486005683723">',
+			i: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/I_0bb23e03-48cb-4935-8842-5033f8ba5cfe.png?1621742486005683723">',
+			j: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/J_5b9553ba-f068-432c-b3b0-975f2ec4a4a3.png?1621742486005683723">',
+			k: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/K_afc1f9c6-5149-49c1-9ff6-28072899b5a0.png?1621742486005683723">',
+			l: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/L_b1d7d36f-a7d0-4a49-a1e7-39b73e6875f6.png?1621742486005683723">',
+			m: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/M_5152c93c-2fe4-46d3-82a7-b94620e81ac9.png?1621742486005683723">',
+			n: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/N_bb9c49d9-e150-4eb2-8299-9bbf33061772.png?1621742486005683723">',
+			o: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/O_92203f2a-2730-4243-8062-4d5ac31aa306.png?1621742486005683723">',
+			p: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/P_f3a160e4-7115-4062-889b-0e396d5294dc.png?1621742486005683723">',
+			q: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/Q_1d3eca9c-2603-4671-a7f3-5367a973e879.png?1621742486005683723">',
+			r: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/R_758fdcbe-3aa2-40af-a866-41dc03f499f4.png?1621742486005683723">',
+			s: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/S_dca861ae-3cef-4d15-88dc-fe0d3d5da443.png?1621742486005683723">',
+			t: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/T_0f351488-6ef0-40e4-b3c4-736501a3635f.png?1621742486005683723">',
+			u: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/U_7125130b-d28d-4ee2-be5f-afd104ce5459.png?1621742486005683723">',
+			v: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/V_1d204101-fc24-4abd-9ff7-048b8dffa5ec.png?1621742486005683723">',
+			w: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/W_7229bdd1-3e37-4ce8-aa58-a458a2f07640.png?1621742486005683723">',
+			x: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/X_9ba51169-a201-41df-9c63-df06e2433b23.png?1621742486005683723">',
+			y: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/Y_ff303aab-b1f3-4fcf-a5ac-3ca13d7f3ca6.png?1621742486005683723">',
+			z: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/Z_1993f70f-db71-40ef-930c-8eb819ad47cf.png?1621742486005683723">'
+		},
+		//Last Letter
+		{
+			a: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/A_092400af-1ddd-41c3-ab41-a585a27769b3.png?2682781832619592106">',
+			b: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/B_c9f0a7a5-ce79-40cf-bcec-ee31df5d7517.png?2682781832619592106">',
+			c: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/C_9c49a8b0-a262-42fb-aeeb-a867ad0a74a9.png?2682781832619592106">',
+			d: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/D_ce4567dd-2003-47ed-a6aa-52292fe483cc.png?2682781832619592106">',
+			e: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/E_bee01d44-ece4-489f-aa37-74e66bb9dab6.png?2682781832619592106">',
+			f: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/F_2177c3bb-0a47-4b98-9df9-c88d33c2bfa5.png?2682781832619592106">',
+			g: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/G_e0dec232-a37c-4751-9ea6-a34ec2ad4cc2.png?2682781832619592106">',
+			h: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/H_e18c640f-f9b6-4724-9d1b-790fc05b75fb.png?2682781832619592106">',
+			i: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/I_d15a0d15-98cf-4e04-9bb6-865d52c3b9f3.png?2682781832619592106">',
+			j: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/J_f1b2a7c2-7296-4640-ac00-e862848f6080.png?2682781832619592106">',
+			k: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/K_31849021-6ccd-49f8-a376-0b30efd3d264.png?2682781832619592106">',
+			l: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/L_57341365-0d59-4065-9521-ee622fcd7087.png?2682781832619592106">',
+			m: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/M_a7e020a2-d20f-42b4-9563-44c04453ec08.png?2682781832619592106">',
+			n: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/N_461d69c1-191a-4a9c-9b8d-965ff5ba2336.png?2682781832619592106">',
+			o: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/O_e5deb8a1-07a7-4702-84fb-95084c1c9bbd.png?2682781832619592106">',
+			p: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/P_1d1eb363-c438-426f-a3de-a4cc64d423f0.png?2682781832619592106">',
+			q: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/Q_dfcca0e1-4d4f-4498-a02b-3f64bcb0cc98.png?2682781832619592106">',
+			r: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/R_4c810792-b9d9-4937-81be-88e58e2b72e5.png?2682781832619592106">',
+			s: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/S_d0dffd17-65e7-48ec-b2c2-9b4cf186533f.png?2682781832619592106">',
+			t: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/T_1d43ce17-7d95-4f4e-80d0-e13a114d316e.png?2682781832619592106">',
+			u: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/U_ed866635-5aca-4025-a9c2-57e5cadcad85.png?2682781832619592106">',
+			v: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/V_58309fa3-3643-42b4-85bd-995b13cec514.png?2682781832619592106">',
+			w: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/W_1c28dc71-63d1-41a0-92d6-c8dada35ae3f.png?2682781832619592106">',
+			x: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/X_6f3d47a4-d65e-44b2-a1f9-48f437cf2c11.png?2682781832619592106">',
+			y: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/Y_c186b473-9d66-44d9-8764-71449e14da2a.png?2682781832619592106">',
+			z: '<img src="https://cdn.shopify.com/s/files/1/0035/0306/3153/files/Z_db099477-f528-451f-803c-97a4aac39f07.png?2682781832619592106">'
+		}
+	];
+
+$('.js-submit').click(function(){
+	$('#ProductPhoto .MonogramLetter__container').empty();
+	$('#ProductPhoto_2 .MonogramLetter__container').empty();
+
+
+		//Initialize first, second and third letters
+		let firstLetter = $(this).closest('.InitialForm').find('.js-first').val().toLowerCase();
+		let secondLetter = $(this).closest('.InitialForm').find('.js-second').val().toLowerCase();
+		let thirdLetter = $(this).closest('.InitialForm').find('.js-third').val().toLowerCase();
+		var $initialForm = $(this).closest('.InitialForm');
+		//Add Warning if input is empty
+		$initialForm.find('input').each(function(){
+			if ($(this).val() === ''){
+				$(this).addClass('warning');
+			}else{
+				$(this).removeClass('warning');
+			}
+		});
+
+		//If the first, second and third inputs are not empty, call the image file
+	if (firstLetter != '' && secondLetter != '' && thirdLetter != ''){
+		$('#ProductPhoto .MonogramLetter__container').append(monogramLetters[0][firstLetter],monogramLetters[1][secondLetter],monogramLetters[2][thirdLetter]);
+		$('#ProductPhoto_2 .MonogramLetter__container').append(monogramLetters[0][firstLetter],monogramLetters[1][secondLetter],monogramLetters[2][thirdLetter]);
+	}
+});
+</script>

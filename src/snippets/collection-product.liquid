@@ -20,9 +20,8 @@
       <img srcset="{{ product.featured_image | img_url: '512x512', scale: 2 }} 2x" src="{{ product.featured_image | img_url: '512x512' }}" alt="{{ product.featured_image.alt | escape }}">
     </a>
   {% endif %}
-
-{% assign test = 0 %}
-{% assign exists = false %}
+    {% assign test = 0 %}
+    {% assign exists = false %}
     {% for tag in product.tags %}
     {% if tag contains 'new' %}
     <span class="Product__new">New!</span>
@@ -45,7 +44,7 @@
 
       {% if product.title == prod.title%}
         <li>
-          <a href="{{prod.url}}" class="ProductForm__value asdasd ProductForm__value--color {% if product.url == prod.url %}active{% endif %}" style="background-color: {{prod.metafields.color.swatch}}" title="{{prod.metafields.c_f.colorway}}"></a>
+          <a href="{{prod.url}}" class="ProductForm__value ProductForm__value--color {{prod.metafields.color.swatch}} {% if product.url == prod.url %}active{% endif %}" style="background-color: {{prod.metafields.color.swatch}}" title="{{prod.metafields.c_f.colorway}}"></a>
         </li>
       {% endif %}
     {% endfor %}
@@ -53,7 +52,8 @@
   </ul>
   <p class="CollectionProduct__text-container">
 
-<a class="CollectionProduct__title" href="{{ product.url | within: collection }}">{{ product.title }}</a><br>
+
+<a class="CollectionProduct__title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
     {% if on_sale %}
       {% if product.price_varies %}
         <p class="CollectionProduct__price">{{ 'product.on_sale_from_html' | t: price: sale_price }}</p>

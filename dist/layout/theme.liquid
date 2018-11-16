@@ -30,6 +30,7 @@
 
     <!-- CSS ================================================================= -->
     {{ 'app.scss.css' | asset_url | stylesheet_tag }}
+    {{ 'colors.scss.css' | asset_url | stylesheet_tag }}
 
     <!-- JavaScript =========================================================== -->
     {% if shop.customer_accounts_enabled and template contains 'customers' %}
@@ -39,6 +40,7 @@
     {{ 'vendor.js' | asset_url | script_tag }}
     {{ 'slick.js' | asset_url | script_tag }}
     {{ 'cart.min.js' | asset_url | script_tag }}
+
     <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'app.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
     <!--[if lte IE 9]><script src="{{ 'app.js' | asset_url }}"></script><![endif]-->
 
@@ -50,7 +52,13 @@
       jQuery(function() {
           CartJS.init({{ cart | json }});
       });
+      $(document).on('cart.requestComplete', function(event, cart) {
+        $('#PopupCart').addClass('visible');
+      });
+
     </script>
+
+
 
     {% section 'theme-promobar' %}
 

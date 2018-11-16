@@ -3,6 +3,7 @@
 }
 .MiddleBanner__image{
 	position:relative;
+  box-shadow: inset 0 2px 4px 2px rgba(0,0,0,0.1194);
 }
 .MiddleBanner__text{
 	position:absolute;
@@ -27,6 +28,9 @@
 	text-transform:uppercase;
 	font-size:.8125rem;
 	font-family:"Brandon-Bold";
+}
+.MiddleBanner .button{
+	line-height:32px;
 }
 @include s(){
 	.MiddleBanner{

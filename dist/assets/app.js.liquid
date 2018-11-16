@@ -530,14 +530,24 @@ concrete.Variants = (function() {
       this._updateMasterSelect(variant);
       this._updateImages(variant);
       this._updatePrice(variant);
-      this._updateSKU(variant);
       this.currentVariant = variant;
 
       if (this.enableHistoryState) {
         this._updateHistoryState(variant);
       }
+      // BEGIN SWATCHES
+      var selector = this.originalSelectorId;
+      if (variant) {
+        var form = $(selector).closest('form');
+        for (var i=0,length=variant.options.length; i<length; i++) {
+          var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');
+          if (radioButton.size()) {
+            radioButton.get(0).checked = true;
+          }
+        }
+      }
+      // END SWATCHES
     },
-
     _updateImages: function(variant) {
       var variantImage = variant.featured_image || {};
       var currentVariantImage = this.currentVariant.featured_image || {};

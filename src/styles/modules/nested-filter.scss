@@ -37,13 +37,14 @@
 	right:0px;
 }
 .NestedFilter__top .NestedFilter__option:after{
-	content: url('../assets/down.svg');
+	content: url('../assets/up.svg');
 	position:absolute;
 	top:-1px;
 	right:0px;
 }
 .NestedFilter__top .active .NestedFilter__option:after{
-	content: url('../assets/up.svg');
+	content: url('../assets/down.svg');
+
 }
 .NestedFilter__value--style{
 	padding:0;
@@ -91,12 +92,14 @@
 	.NestedFilter__center{
 		margin-top:0;
 	}
-	.NestedFilter__bottom,
 	.NestedFilter__option-container .NestedFilter__values-container{
 		display:none;
 	}
 }
 @include s(){
+	.NestedFilter__bottom{
+		display:none;
+	}
 	.NestedFilter{
 		width:50%;
 		max-width:100%;

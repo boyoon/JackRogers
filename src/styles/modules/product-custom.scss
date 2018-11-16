@@ -1,0 +1,47 @@
+.ProductCustom__color{
+	width:25px;
+	height:25px;
+	background-color:black;
+	margin-bottom:10px;
+}
+
+.ProductCustom{
+	display: block;
+	width: 43em;
+	margin: 0 auto;
+	background-color: #666;
+	overflow: auto;
+	border-radius: 5px;
+	box-shadow: 0 3px 3px rgba(0,0,0,0.3);
+
+}
+.ProductCustom .selector-wrapper{
+	position: relative;
+	display: block;
+	float: left;
+	width: 2em;
+	height: 12em;
+	margin: 0.5em 0 0.5em 0.5em;
+	color: #333;
+	background-color: #333;
+	overflow: hidden;
+	border-radius: 3px;
+}
+
+.ProductCustom .selector-wrapper:target
+{
+	width: 30em;
+	padding: 0 1em;
+	color: #333;
+	background-color: #fff;
+}
+
+
+.ProductCustom .selector-wrapper
+{
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-ms-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;
+}

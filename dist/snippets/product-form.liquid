@@ -1,9 +1,11 @@
 
+
+
 <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
   <meta itemprop="priceCurrency" content="{{ shop.currency }}">
   <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
 
-  <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" enctype="multipart/form-data">
+  <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" enctype="multipart/form-data" data-cart-submit>
 
     <span class="hidden">{{ 'product.regular_price' | t }}</span>
     <span id="ProductPrice" class="h2" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
@@ -20,12 +22,13 @@
     
 
   <div class="ProductForm__color">
-  <h2>Color</h2>
+
+  <h2>Color: <span class="ProductForm__color--title" >{{product.metafields.color.swatch}}</span></h2>
   <ul class="ProductForm__values ProductForm__values--color">
     {% paginate collections.all.products by 1000 %}
     {% for prod in collections.all.products %}
       {% if product.title == prod.title and product.type == prod.type and product.metafields.c_f.product_material == prod.metafields.c_f.product_material %}
-        <li>
+        <li class="{% if product.metafields.color.swatch == prod.metafields.color.swatch %} active {%endif%}">
           <a href="{{prod.url}}" class="ProductForm__value ProductForm__value--color {{prod.metafields.color.swatch}} {% if product.url == prod.url %}active{% endif %}" style="background-color: {{prod.metafields.color.swatch}}" title="{{prod.metafields.c_f.colorway}}"></a>
         </li>
       {% endif %}
@@ -34,10 +37,18 @@
   </ul>
   </div>
     {% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
-      {% for option in product.options_with_values %}
-        <label {% if option.name == 'default' or option.name =='Color' %}class="hidden" {% endif %}for="SingleOptionSelector-{{ forloop.index }}">
-          {{ option.name }}
+      {%- for option in product.options_with_values -%}
+        <label {% if option.name == 'default' or option.name =='Color' %}class="hidden" {% endif %}for="SingleOptionSelector-{{ forloop.index }}" class="{%if option.name contains 'Size' %} js-sizeLabel {%endif%}">
+          {{option.name}}: 
+            {%- if option.name contains 'Size' -%}
+             <span class="ProductForm__size-label">
+              {%- for value in option.values limit:1 -%}
+                 {{ value | remove:'Mens' | remove:'Womens' | remove:'Kids' }}
+              {%- endfor -%}
+            </span>
+            {%- endif -%}
         </label>
+
         <div class="select-wrapper {% if option.name contains 'Size'% or option.name contains 'Color' %} hidden {%endif %}">
           <select class="single-option-selector" id="SingleOptionSelector-{{ forloop.index }}" data-index="option{{ forloop.index }}">
             {% for value in option.values %}
@@ -64,7 +75,7 @@
         {% endif %}
         {% if option.name contains 'Color'%}
         {% endif %}
-      {% endfor %}
+      {%- endfor -%}
     {% endunless %}
   
     {% comment %}
@@ -109,10 +120,23 @@
         <span id="AddToCartText">{{ 'product.sold_out' | t }}</span>
       </button>
     {% else %}
-    <button class="ProductForm__submit Btn Btn--primary Btn--big js-productAdd" data-cart-add="{{product.selected_or_first_available_variant.id}}" data-cart-quantity="1" type="submit" name="add">
+    <button class="ProductForm__submit Btn Btn--primary Btn--big js-productAdd" data-add-to-cart data-cart-add="{{product.selected_or_first_available_variant.id}}" data-cart-quantity="1" type="submit" name="add">
       <span id="AddToCartText">{{ 'product.add_to_cart' | t }}</span>
     </button>
     {% endif %}
   </div>
   </form>
 </div>
+
+
+<script>
+  $(document).ready(function(){
+    $('.ProductForm__value--size').click(function(){
+      $(this).closest('.ProductForm__values').find('.ProductForm__value--size').removeClass('active');
+      $(this).addClass('active');
+      var selectedVal = $(this).val();
+      var replaceVal = $(this).closest('form').find('.js-sizeLabel .ProductForm__size-label');
+      $(replaceVal).text(selectedVal);
+    });
+  });
+</script>

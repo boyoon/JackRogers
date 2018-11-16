@@ -4,6 +4,16 @@
     <div class="Product__size-chart-container">
       <div class="Product__size-chart-bar">
         <div class="Product__size-chart-middle"></div>
+
+        {% for tag in product.tags %}
+          {% if tag contains 'true-to-size' %}
+            <div class="Product__size-dot--true"></div>
+          {% elsif  tag contains 'runs-small' %}
+            <div class="Product__size-dot--true"></div>
+          {% elsif  tag contains 'runs-big' %}
+            <div class="Product__size-dot--true"></div>
+          {% endif %}
+        {% endfor %}
       </div>
 
       <div class="Product__size-chart-text">

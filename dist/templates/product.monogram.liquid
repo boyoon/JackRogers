@@ -27,7 +27,10 @@
     <div class="row">
       <div class="Product__image column l7 m6 s12">
         <div id="ProductPhoto">
-          <img class="ProductPhoto" src="{{ product.featured_image | img_url: '1024x1024' }}"{% if image.alt %} alt="{{ product.featured_image.alt | escape }}"{% endif %}>
+          <img  class="ProductPhoto" src="{{ product.featured_image | img_url: '1024x1024' }}"{% if image.alt %} alt="{{ product.featured_image.alt | escape }}"{% endif %}>
+          <div class="MonogramLetter">
+            <div class="MonogramLetter__container"></div>
+          </div>
         </div>
 
         {% if product.images.size > 1 %}
@@ -62,6 +65,9 @@
           {% else %}
           <div id="ProductPhoto_2" class="">
             <img src="{{ product.featured_image | img_url: '1024x1024' }}"{% if image.alt %} alt="{{ product.featured_image.alt | escape }}"{% endif %}>
+            <div class="MonogramLetter">
+              <div class="MonogramLetter__container"></div>
+            </div>
           </div>
         {% endif %}
       </div>
@@ -75,6 +81,7 @@
         <h1 class="Product__title" itemprop="name">{{ product.title }}</h1>
         {% include 'product-form' %}
         {% include 'product-description'%}
+        {% include 'product-initials' %}
 
         <div class="Product__share">
           <h4 class="margin-top-5x">{{ 'social.share.title' | t }}</h4>
@@ -130,7 +137,7 @@ $('.js-productAdd').click(function(){
   $(this).attr('data-cart-quantity', quantitys);
   $(document).on('cart.requestComplete', function(event, cart){
 
-  //location.href = "https://jackrogersusa.myshopify.com/cart";
+  location.href = "https://jackrogersusa.myshopify.com/cart";
   });
 });
 
@@ -145,56 +152,4 @@ $('.Product__thumbnail--slider').slick({
 
 <script type="application/json" id="ProductJson">
  {{ product | json }}
-</script>
-
-
-
-
-{% comment %}
-  You might already have this script in your theme so keep / remove as needed
-{% endcomment %}
-{{ 'option_selection.js' | shopify_asset_url | script_tag }}
-<script>
-  /* 
-    build a new product json output for the option selectors to use.
-    Since the product json can be used by other apps and scripts let's just recreate the whole thing from scratch, using out new variant list instead of the default ones.
-  */
-  var productJson = {
-    id: {{ product.id | json }},
-    title: {{ product.title | json }},
-    handle: {{ product.handle | json }},
-    description: {{ product.description | json }},
-    vendor: {{ product.vendor | json }},
-    type: {{ product.type | json }},
-    tags: {{ product.tags | json }},
-    price: {{ product.price | json }},
-    price_min: {{ product.price_min | json }},
-    price_max: {{ product.price_max | json }},
-    available: {{ product.available | json }},
-    price_varies: {{ product.price_varies | json }},
-    compare_at_price: {{ product.compare_at_price | json }},
-    compare_at_price_min: {{ product.compare_at_price_min | json }},
-    compare_at_price_max: {{ product.compare_at_price_max | json }},
-    compare_at_price_varies: {{ product.compare_at_price_varies | json }},
-    variants: {{ productVariants | json }}, /* this is our new master list - assuming it works! */ 
-    images: {{ product.images | json }},
-    featured_image: {{ product.featured_image | json }},
-    options: {{ product.options | json }},
-    url: {{ product.url | json }}
-  };
-  /* 
-  This should really be your selectCallback function but I've thrown this in just for testing only...
-  */
-  var selectCallback = function(variant, selector) {
-    console.log(variant, selector);
-    return;
-  };
-  /* assuming your theme has jQuery in place, let's fire the option selector scripts */
-  $(function() {
-    new Shopify.OptionSelectors('ProductSelect', {
-      product: productJson,
-      onVariantSelected: selectCallback,
-      enableHistoryState: true
-    });
-  });
 </script>
