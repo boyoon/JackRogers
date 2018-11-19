@@ -1,47 +1,71 @@
+.ProductCustom{
+	display:flex;
+	max-width:40%;
+	width:100%;
+}
+.ProductCustom__title{
+	width:60px;
+	transition:all .5s ease;
+
+}
+.ProductCustom__step.active .ProductCustom__title{
+	visibility: none;
+	opacity:0;
+}
+.ProductCustom__step--1{
+	background-color:#F8F8F8;
+}
+.ProductCustom__step--2{
+	background-color:#F1F1F1;
+}
+.ProductCustom__step--3{
+	background-color:#E8E8E8;
+}
+.ProductCustom__step{
+	display:flex;
+	transition:all 1s ease;
+	width:60px;
+}
 .ProductCustom__color{
 	width:25px;
 	height:25px;
 	background-color:black;
 	margin-bottom:10px;
 }
-
-.ProductCustom{
-	display: block;
-	width: 43em;
-	margin: 0 auto;
-	background-color: #666;
-	overflow: auto;
-	border-radius: 5px;
-	box-shadow: 0 3px 3px rgba(0,0,0,0.3);
+.ProductCustom select{
+	display:none;
+}
+.ProductCustom--options{
+	opacity:0;
+	visibility: hidden;
+	width:0;
+	overflow:hidden;
+	transition: all .5s ease;
+}
+.ProductCustom__step--3.active,
+.ProductCustom__step--2.active,
+.ProductCustom__step--1.active{
+	width:33%;
+}
+.ProductCustom__step--3.active .ProductCustom--options,
+.ProductCustom__step--2.active .ProductCustom--options,
+.ProductCustom__step--1.active .ProductCustom--options{
+	opacity:1;
+	visibility:visible;
+	width:100%;
 
 }
-.ProductCustom .selector-wrapper{
-	position: relative;
-	display: block;
-	float: left;
-	width: 2em;
-	height: 12em;
-	margin: 0.5em 0 0.5em 0.5em;
-	color: #333;
-	background-color: #333;
-	overflow: hidden;
-	border-radius: 3px;
+.ProductCustom__swatch--color{
+	width:30px;
+	height:30px;
+	background-color:blue;
+	margin-bottom:5px;
 }
 
-.ProductCustom .selector-wrapper:target
-{
-	width: 30em;
-	padding: 0 1em;
-	color: #333;
-	background-color: #fff;
+.ProductCustom__option--swatches{
+	@include flex();
+	flex-flow:row wrap;
 }
-
-
-.ProductCustom .selector-wrapper
-{
-	-webkit-transition: all 1s ease;
-	-moz-transition: all 1s ease;
-	-ms-transition: all 1s ease;
-	-o-transition: all 1s ease;
-	transition: all 1s ease;
+.ProductCustom__swatch--container{
+	width:20%;
 }
