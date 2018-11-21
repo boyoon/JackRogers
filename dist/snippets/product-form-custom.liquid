@@ -1,7 +1,5 @@
 <div class="ProductCustom">
-  
-
-
+<div class="ProductCustom--left">
   <div class="ProductCustom__step ProductCustom__step--1 js-step">
     <div class="ProductCustom__title ProductCustom__color--title js-title">1</div>
     <div class="ProductCustom--options ProductCustom__color--options">
@@ -28,9 +26,6 @@
       </div>
     </div>
   </div>
-
-
-
   <div class="ProductCustom__step ProductCustom__step--2 js-step">
     <div class="ProductCustom__title ProductCustom__stitch--title js-title">2</div>
     <div class="ProductCustom--options ProductCustom__stitch--options">
@@ -57,7 +52,6 @@
       </div>
     </div>
   </div>
-
   <div class="ProductCustom__step ProductCustom__step--3 js-step">
     <div class="ProductCustom__title ProductCustom__size--title js-title">3</div>
     <div class="ProductCustom--options ProductCustom__size--options">
@@ -79,9 +73,12 @@
   </div>
 </div>
 
-
-
-
+  <div class="ProductCustom--right">
+    <div class="ProductCustom__background" style="background:url({{section.settings.background_image | img_url:'master' ;}});">
+      
+    </div>
+  </div>
+</div>
 
 <script>
   $('.js-step').click(function(){
@@ -123,3 +120,42 @@
 
 
 </script>
+
+
+
+
+
+
+
+{% schema %}
+{
+  "name": "Custom Product",
+  "settings":[
+    {
+      "type":"image_picker",
+      "id":"background_image",
+      "label":"Select Background Image"
+    },
+    {
+      "type":"text",
+      "id":"main_title",
+      "label":"Title"
+    },
+    {
+      "type":"text",
+      "id":"main_sub",
+      "label":"Main Title Sub"
+    },
+    {
+      "type":"text",
+      "id":"subtitle",
+      "label":"Subtitle"
+    },
+    {
+      "type":"text",
+      "id":"button_text",
+      "label":"Button text"
+    }
+  ]
+}
+{% endschema %}

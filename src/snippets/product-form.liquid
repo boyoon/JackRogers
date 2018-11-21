@@ -99,6 +99,36 @@
       </div>
     </div>
 
+    <div class="hidden productSelect--custom">
+      <div class="select-wrapper">
+        <select name="id" data-index="option{{ forloop.index }}">
+          {% for variant in product.variants %}
+            {% if variant.available %}
+              <option
+                value="{{ variant.id }}" data-cost="{{variant.price | money_with_currency}}">{{ variant.title }}
+              </option>
+            {% else %}
+              <option disabled="disabled">
+                {{ variant.title }} - {{ 'product.sold_out' | t }}
+              </option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+      <div class="quantity-selector">
+        <select name="" id="">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+      </div>
+    </div>
 
     {% if on_sale %}
       <p id="OnSale">

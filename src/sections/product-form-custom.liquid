@@ -1,0 +1,369 @@
+<div class="ProductCustom">
+<div class="ProductCustom--left">
+  <div class="ProductCustom__step ProductCustom__step--1 js-step js-stepOne">
+    <div class="ProductCustom__title ProductCustom__color--title js-title"><p>1</p></div>
+    <div class="ProductCustom--options ProductCustom__color--options">
+      <div class="ProductCustom__title-container">
+        <h2>Step 1</h2>
+        <p>Sandal Color</p>
+      </div>
+      
+      <div class="ProductCustom__options">
+        <div class="ProductCustom__label">
+          <p>Sandal Plain</p>
+        </div>
+        
+        <div class="ProductCustom__option--swatches ProductCustom__color--swatches">
+        {% for tag in product.tags %}
+        {% if tag contains 'color_' %}
+          {% assign color = tag | split: '_' | last %}
+            <div class="ProductCustom__swatch--container ProductCustom__swatch--color--container">
+              <div data-color="{{color}}" class="{{color}} ProductCustom__swatch--color js-colorSwatch"></div>
+            </div>
+          {% endif %}
+        {% endfor %}
+        </div>
+      </div>
+
+
+      <div class="ProductCustom__next js-next">
+        <button>Next</button>
+      </div>
+    </div>
+  </div>
+  <div class="ProductCustom__step ProductCustom__step--2 js-stepTwo js-step">
+    <div class="ProductCustom__title ProductCustom__stitch--title js-title"><p>2</p></div>
+    <div class="ProductCustom--options ProductCustom__stitch--options">
+      <div class="ProductCustom__title-container">
+        <h2>Step 2</h2>
+        <p>Choose Whipstick color</p>
+      </div>
+
+      <div class="ProductCustom__options">
+        <div class="ProductCustom__label">
+          <p>Whipstich Plain</p>
+        </div>
+        
+        <div class="ProductCustom__option--swatches ProductCustom__stitch--swatches">
+        {% for tag in product.tags %}
+        {% if tag contains 'whipstitch_' %}
+        {% assign stitchColor = tag | split: '_' | last %}
+          <div class="ProductCustom__swatch--container ProductCustom__swatch--stitch--container">
+            <div data-stitch="{{stitchColor}}" class="{{stitchColor}} ProductCustom__swatch--color js-stitchSwatch"></div>
+          </div>
+        {% endif %}
+        {% endfor %}
+        </div>
+      </div>
+
+
+      <div class="ProductCustom__next ProductCustom__next--2">
+        <button class="ProductCustom__prev js-prev">Back</button>
+        <button class="ProductCustom__nexted js-nextTwo">Next</button>
+      </div>
+
+    </div>
+  </div>
+  <div class="ProductCustom__step ProductCustom__step--3 js-step js-stepThree">
+    <div class="ProductCustom__title ProductCustom__size--title js-title"><p>3</p></div>
+    <div class="ProductCustom--options ProductCustom__size--options">
+      <div class="ProductCustom__title-container">
+        <h2>Step 3</h2>
+        <p>Choose Size</p>
+      </div>
+
+      <div class="ProductCustom__options">
+        <div class="ProductCustom__label">
+          <p>Size</p>
+        </div>
+        
+        <div class="ProductCustom__option--swatches ProductCustom__size--swatches js-sizeContainer"></div>
+        <div class="ProductCustom__add-more js-addMore">Add More Sizes</div>
+      </div>
+
+      <div class="ProductCustom__next ProductCustom__next--2">
+        <button class="ProductCustom__prev js-prevThree">Back</button>
+        <button class="ProductCustom__nexted js-nextThree">Next</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <div class="ProductCustom--right">
+    <div class="ProductCustom__right__step--1 active">
+      <div class="ProductCustom__image-background">
+        <img src="{{section.settings.background_image | img_url:'master'}}">      
+      </div>
+      <div class="ProductCustom__text-container">
+        <h2>{{section.settings.main_title}}</h2>
+        <h3>{{section.settings.main_sub}}</h3>
+        <p>{{section.settings.subtitle}}</p>
+        <button>{{section.settings.button_text}}</button>
+      </div>
+    </div>
+    <div class="ProductCustom__right__step--2">
+      <div class="ProductCustom__image-sandal">
+        <img src="{{section.settings.default_shoe | img_url:'master'}}">      
+      </div>
+      <div class="ProductCustom__text-container--right">
+        <div class="ProductCustom__text--right">
+          <h1>Custom Jack Sandal</h1>
+          <p class="price">Price</p>
+          <p class="ProductCustom__option--line">Sandal Color</p>
+          <div class="ProductCustom__option--color js-optionColor"></div>
+          <p class="ProductCustom__option--line">Whipstich color</p>
+          <div class="ProductCustom__option__stitch js-optionStitch"></div>
+          <p class="ProductCustom__option--line">Size and Quantity</p>
+          <div class="ProductCustom__option--size js-optionSize">
+            <div class="ProductCustom__options">
+
+              
+              <div class="ProductCustom__option--swatches ProductCustom__size--swatches js-sizeContainer"></div>
+              <div class="ProductCustom__add-more js-addMore">Add More Sizes</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .ProductCustom__text-container h2{
+    color:{{section.settings.main_color}};
+    font-size:{{section.settings.main_font_size}}px;
+    font-family:'Brandon-Bold';
+    text-transform:uppercase;
+    line-height:{{section.settings.main_font_size}}px;
+
+  }
+  .ProductCustom__text-container h3{
+    color:{{section.settings.main_sub_color}};
+    font-size:{{section.settings.main_sub_size}}px;
+    font-family:'Brandon-Bold';
+    text-transform:uppercase;
+    line-height:{{section.settings.main_sub_size}}px;
+    margin-bottom:35px;
+  }
+  .ProductCustom__text-container p{
+    font-family:'Brandon-Reg';
+    font-size:{{section.settings.subtitle_size}}px;
+    color:{{section.settings.sub_color}};
+  }
+  .ProductCustom__text-container button{
+    background-color:transparent;
+    background-color:{{section.settings.button_background_color}};
+    color:{{section.settings.button_color}};
+    border:2px solid {{section.settings.button_color}};
+    font-family:'Brandon-Bold';
+    font-size:{{section.settings.button_size}}px;
+    text-transform:uppercase;
+    border-radius:0;
+    height:35px;
+    line-height:32px;
+    max-width:240px;
+    width:100%;
+  }
+</style>
+
+
+<script>
+
+  $('.js-title').click(function(){
+    $(this).closest('.ProductCustom--left').find('.js-step').removeClass('active');
+    $(this).closest('.ProductCustom--left').addClass('active');
+    $('.ProductCustom__right__step--1').removeClass('active');
+    $('.ProductCustom__right__step--2').addClass('active');
+    $(this).closest('.js-step').addClass('active');
+    $(this).addClass('active');
+  });
+  $('.js-next').click(function(){
+    $(this).closest('.js-step').removeClass('active');
+    $('.js-stepTwo').addClass('active');
+  });
+
+  var color;
+  var variants = [
+    {color:'Black', pattern:'Black', handle:'baby-jacks-multi'},
+    {color:'Black', pattern:'Blue', handle:'b'},
+    {color:'Blue', pattern:'Blue', handle:'c'}
+  ]
+
+  $('.js-colorSwatch').click(function(){
+    color = $(this).data('color');
+    $(this).closest('.ProductCustom--options').find('.js-next').addClass('active');
+    $('.js-optionColor').empty();
+    $(this).closest('.ProductCustom__swatch--container').clone().appendTo('.js-optionColor');
+  });
+
+  $('.js-stitchSwatch').click(function(){
+    $(this).closest('.ProductCustom--options').find('.ProductCustom__nexted').addClass('active');
+
+    var stitch = $(this).data('stitch');
+    $('.js-optionStitch').empty();
+    $(this).closest('.ProductCustom__swatch--container').clone().appendTo('.js-optionStitch');
+    console.log(color, stitch);
+    _.find(variants, function(o){
+      if(o.color === color){
+       if(o.pattern === stitch){
+          var handle = o.handle;
+          $.ajax({
+            type:'GET',
+            url:'https://jackrogersusa.myshopify.com/products/' + handle,
+            beforeSend: function(){
+              $('.ProductCustom__step--3 .ProductCustom__options').addClass('loader');
+            },
+            success: function(data){
+              console.log('success');
+
+              $('.ProductCustom__step--3 .ProductCustom__options').removeClass('loader');
+              var productForm = $(data).find('.productSelect--custom');
+              console.log(productForm);
+              $('.js-stepThree .ProductCustom__size--swatches').append(productForm);
+
+              //script
+              $('.SingleOptionSelector-1').change(function(){
+                var selectedVal = $(this).val();
+                console.log(selectedVal);
+              });
+              $('.js-addMore').click(function(){
+                $('.js-stepThree .ProductCustom__size--swatches').append(productForm.clone());
+                $('.js-optionSize .ProductCustom__size--swatches.active').append(productForm.clone());
+              });
+            }
+          });
+       } 
+      }
+    });
+  });
+
+  $('.js-prev').click(function(){
+    $('.js-stepTwo').removeClass('active');
+    $('.js-stepOne').addClass('active')
+  });
+  $('.js-nextTwo').click(function(){
+    $(this).closest('.js-stepTwo').removeClass('active');
+    $('.js-stepThree').addClass('active');
+  });
+
+  $('.js-nextThree').click(function(){
+    $('.js-optionSize .js-sizeContainer').empty();
+    //$('.ProductCustom--left').removeClass('active');
+    //$(this).closest('.js-stepThree').removeClass('active');
+    $('.productSelect--custom select').each(function(i){
+      console.log($(this));
+      var selectedValue = $(this).val();
+      $(this).clone().val(selectedValue).appendTo('.js-optionSize .js-sizeContainer');      
+    });
+    var spliced = $('.js-optionSize .js-sizeContainer select');
+    console.log(spliced.length);
+    for(var i=0; i <spliced.length; i+=2){
+      spliced.slice(i, i+2).wrapAll('<div class="productSelect--custom--2"></div>');
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Product",
+  "settings":[
+    {
+      "type":"image_picker",
+      "id":"background_image",
+      "label":"Select Background Image"
+    },
+    {
+      "type":"color",
+      "id":"main_color",
+      "label":"Main Title Color"
+    },
+    {
+      "type":"text",
+      "id":"main_title",
+      "label":"Title"
+    },
+    {
+      "type":      "range",
+      "id":        "main_font_size",
+      "min":       1,
+      "max":        99,
+      "step":       1,
+      "unit":       "px",
+      "label":     "Font size (1-99px)",
+      "default":   16
+    },
+    {
+      "type":"color",
+      "id":"main_sub_color",
+      "label":"Main Subtitle Color"
+    },
+    {
+      "type":"text",
+      "id":"main_sub",
+      "label":"Main Title Sub"
+    },
+    {
+      "type":      "range",
+      "id":        "main_sub_size",
+      "min":       1,
+      "max":        99,
+      "step":       1,
+      "unit":       "px",
+      "label":     "Font size (1-99px)",
+      "default":   16
+    },
+    {
+      "type":"color",
+      "id":"sub_color",
+      "label":"Subtitle Color"
+    },
+    {
+      "type":"text",
+      "id":"subtitle",
+      "label":"Subtitle"
+    },
+    {
+      "type":      "range",
+      "id":        "subtitle_size",
+      "min":       1,
+      "max":        99,
+      "step":       1,
+      "unit":       "px",
+      "label":     "Font size (1-99px)",
+      "default":   16
+    },
+    {
+      "type":"color",
+      "id":"button_color",
+      "label":"Button Color"
+    },
+    {
+      "type":"color",
+      "id":"button_background_color",
+      "label":"Button Background Color"
+    },
+    {
+      "type":"text",
+      "id":"button_text",
+      "label":"Button text"
+    },
+    {
+      "type":      "range",
+      "id":        "button_size",
+      "min":       1,
+      "max":        99,
+      "step":       1,
+      "unit":       "px",
+      "label":     "Font size (1-99px)",
+      "default":   16
+    },
+    {
+      "type":"image_picker",
+      "id":"default_shoe",
+      "label":"Select Custom Image"
+    }
+  ]
+}
+{% endschema %}

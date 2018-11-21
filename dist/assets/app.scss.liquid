@@ -3376,14 +3376,29 @@ a.Footer__contact-button{
 }
 	
 .ProductCustom{
-	display:flex;
-	max-width:40%;
+	@include flex();
+	flex-flow:initial;
+}
+.ProductCustom--left{
+	@include flex();
+	flex-flow:initial;
+	max-width:180px;
 	width:100%;
+	transition: all .5s ease;
+}
+.ProductCustom--left.active{
+	max-width:525px;
 }
 .ProductCustom__title{
 	width:60px;
 	transition:all .5s ease;
-
+	cursor:pointer;
+}
+.ProductCustom__title p{
+	font-family:'Brandon-Bold';
+	font-size:1.875rem;
+	margin-top:55px;
+	text-align:center;
 }
 .ProductCustom__step.active .ProductCustom__title{
 	visibility: none;
@@ -3403,14 +3418,76 @@ a.Footer__contact-button{
 	transition:all 1s ease;
 	width:60px;
 }
+.ProductCustom__title:hover{
+	opacity:.5;
+}
 .ProductCustom__color{
 	width:25px;
 	height:25px;
 	background-color:black;
 	margin-bottom:10px;
 }
-.ProductCustom select{
-	display:none;
+.ProductCustom__next{
+	margin-top:66px;
+	height:35px;
+	line-height:35px;
+}
+.ProductCustom__next button{
+	background-color:transparent;
+	text-transform:uppercase;
+	border-radius:0;
+	color:black;
+	opacity:.15;
+	border:1px solid black;
+	max-width:180px;
+	width:100%;
+	font-family:'Brandon-Bold';
+	font-size:.8125rem;
+	height:35px;
+	line-height:32px;
+	transition: all .5s ease;
+}
+.ProductCustom__next.active button{
+	background-color:black;
+	border-radius:0;
+	color:white;
+	opacity:1;
+	border:1px solid black;
+	max-width:180px;
+	width:100%;
+	font-family:'Brandon-Bold';
+	font-size:.8125rem;
+	height:35px;
+	line-height:32px;
+}
+.ProductCustom__next--2{
+	display:flex;
+	padding-right:50px;
+}
+.ProductCustom__next--2 .ProductCustom__prev{
+	max-width:93px;
+	width:100%;
+	border:1px solid black;
+	font-size:.8125rem;
+	font-family:'Brandon-Bold';
+	text-transform:uppercase;
+	opacity:1;
+}
+.ProductCustom__next--2 .ProductCustom__nexted{
+	border:1px solid black;
+	font-size:.8125rem;
+	font-family:'Brandon-Bold';
+	text-transform:uppercase;
+	opacity:.15;
+	margin-top:0;
+	margin-left:13px;
+	max-width:100%;
+	width:100%;
+}
+.ProductCustom__next--2 .ProductCustom__nexted.active{
+	opacity:1;
+	background-color:black;
+	color:white;
 }
 .ProductCustom--options{
 	opacity:0;
@@ -3419,10 +3496,13 @@ a.Footer__contact-button{
 	overflow:hidden;
 	transition: all .5s ease;
 }
+.ProductCustom__options{
+	padding-right:50px;
+}
 .ProductCustom__step--3.active,
 .ProductCustom__step--2.active,
 .ProductCustom__step--1.active{
-	width:33%;
+	width:100%;
 }
 .ProductCustom__step--3.active .ProductCustom--options,
 .ProductCustom__step--2.active .ProductCustom--options,
@@ -3437,6 +3517,7 @@ a.Footer__contact-button{
 	height:30px;
 	background-color:blue;
 	margin-bottom:5px;
+	cursor:pointer;
 }
 
 .ProductCustom__option--swatches{
@@ -3446,6 +3527,249 @@ a.Footer__contact-button{
 .ProductCustom__swatch--container{
 	width:20%;
 }
+.ProductCustom--right{
+	width:100%;
+	position:relative;
+}
+.ProductCustom__image-background img{
+	width:100%;
+}
+.ProductCustom__text-container{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%, -50%);
+	text-align: center;
+}
+.ProductCustom__text-container h2{
+	margin-bottom:0;
+}
+.ProductCustom__text-container h3{
+	margin-bottom:0;
+}
+
+.ProductCustom__right__step--1{
+	opacity:0;
+	height:0;
+	overflow:hidden;
+	transition: all 1s ease;
+}
+.ProductCustom__right__step--1.active{
+	opacity:1;
+	height:initial;
+}
+.ProductCustom__right_-step--1.active .ProductCustom__text-container{
+	display:none;
+}
+.ProductCustom__right__step--2{
+	opacity:0;
+	visibility:hidden;
+	height:0;
+	transition:all .5s ease; 
+	display:flex;
+}
+.ProductCustom__right__step--2.active{
+	opacity:1;
+	visibility:visible;
+	height:100%;
+
+}
+.ProductCustom__title-container h2{
+	margin-top:55px;
+	margin-bottom:0;
+	text-transform:uppercase;
+	font-family:'Brandon-Bold';
+	font-size:1.875rem;
+}
+.ProductCustom__title-container p{
+	font-family:'Brandon-Reg';
+	font-size:.9375rem;
+	text-transform:uppercase;
+	margin-bottom:45px;
+}
+.ProductCustom__label p{
+	font-family:'Brandon-Bold';
+	font-size:.75rem;
+	text-transform:uppercase;
+	border-bottom:1px solid black;
+	padding-bottom:4px;
+	margin-bottom:20px;	
+}
+
+
+.ProductCustom__right__step--2 .ProductCustom__image-sandal{
+	display:none;
+}
+
+.ProductCustom__right__step--2.active .ProductCustom__image-sandal{
+	display:flex;
+  align-items: center;
+	width:100%;
+}
+.ProductCustom__right__step--2.active .ProductCustom__image-sandal img{
+	margin:0 auto;
+}
+.ProductCustom__right__step--2 .ProductCustom__text-container--right{
+	position:absolute;
+	right:-500px;
+	transition:all .5s ease; 
+	overflow:hidden;
+	width:0;
+	background-color:#F1F1F1;
+}
+.ProductCustom__right__step--2.active .ProductCustom__text-container--right{
+	position:relative;
+	right:0;
+	max-width:300px;
+	width:100%;
+}
+.ProductCustom__text--right{
+	padding-top:55px;
+	padding-left:45px;
+	padding-right:45px;
+}
+.ProductCustom__text--right h1{
+	font-family:'Brandon-Reg';
+	font-size:1.875rem;
+	margin-bottom:20px;
+	line-height:34px;
+	text-transform:uppercase;
+}
+.ProductCustom__text--right .price{
+	font-family:'Brandon-Bold';
+	font-size:1.25rem;
+	margin-bottom:40px;
+}
+.ProductCustom__text--right .ProductCustom__option--line{
+	font-family:'Brandon-Bold';
+	font-size:.75rem;
+	border-bottom:1px solid black;
+	text-transform:uppercase;
+}
+
+.ProductCustom__option--swatches .hidden{
+	display: flex;
+	margin-bottom:15px;
+	width:100%;
+}
+.ProductCustom__option--swatches .hidden .select-wrapper{
+	width:49%;
+	margin-right:1%;
+}
+.ProductCustom__option--swatches .hidden select{
+	border:1px solid #9B9B9B;
+	width:100%;
+	font-size:.75rem;
+	font-family:'Brandon-Reg';
+	height:30px;
+  border-radius: 0;
+	line-height:30px;
+}
+.ProductCustom__option--swatches .hidden .select-wrapper:after{
+	content:'';
+}
+.ProductCustom__option--swatches .hidden .quantity-selector{
+	width:49%;
+	margin-left:1%;
+	height:30px;
+	line-height:30px;
+}
+.ProductCustom__add-more{
+	font-family:'Brandon-Bold';
+	font-size:.75rem;
+	text-align:center;
+	text-transform:uppercase;
+	cursor:pointer;
+}
+.ProductCustom__option--size .ProductCustom__options{
+	padding-right:0;
+}
+.ProductCustom__size--swatches .productSelect--custom--2{
+	display:flex;
+  margin-bottom: 15px;
+  width: 100%;
+}
+.ProductCustom__size--swatches .productSelect--custom--2 select{
+  border: 1px solid #9B9B9B;
+  width: 49%;
+  font-size: .75rem;
+  font-family: 'Brandon-Reg';
+  height: 30px;
+  border-radius: 0;
+  line-height: 30px;	
+}
+.ProductCustom__size--swatches .productSelect--custom--2 select:nth-child(even){
+	margin-left:1%;
+}
+.ProductCustom__size--swatches .productSelect--custom--2 select:nth-child(odd){
+	margin-right:1%;
+}
+
+
+.loader {
+  font-size: 10px;
+  margin: 50px auto;
+  text-indent: -9999em;
+  width: 11em;
+  height: 11em;
+  border-radius: 50%;
+  background: #000000;
+  background: -moz-linear-gradient(left, #000000 10%, rgba(0,0,0, 0) 42%);
+  background: -webkit-linear-gradient(left, #000000 10%, rgba(0,0,0, 0) 42%);
+  background: -o-linear-gradient(left, #000000 10%, rgba(0,0,0, 0) 42%);
+  background: -ms-linear-gradient(left, #000000 10%, rgba(0,0,0, 0) 42%);
+  background: linear-gradient(to right, #000000 10%, rgba(0,0,0, 0) 42%);
+  position: relative;
+  -webkit-animation: load3 1.4s infinite linear;
+  animation: load3 1.4s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.loader:before {
+  width: 50%;
+  height: 50%;
+  background: #000000;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+}
+.loader:after {
+  background: #fdfffe;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  content: '';
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+@-webkit-keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 
 /* Helpers ===================================================================*/
 /* Helpers ===================================================================*/
