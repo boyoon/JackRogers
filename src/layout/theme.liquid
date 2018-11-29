@@ -38,8 +38,7 @@
     {% endif %}
 
     {{ 'vendor.js' | asset_url | script_tag }}
-    {{ 'slick.js' | asset_url | script_tag }}
-    {{ 'cart.min.js' | asset_url | script_tag }}
+    {{ 'custom.js' | asset_url | script_tag}}
 
     <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'app.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
     <!--[if lte IE 9]><script src="{{ 'app.js' | asset_url }}"></script><![endif]-->

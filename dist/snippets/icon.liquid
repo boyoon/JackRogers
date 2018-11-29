@@ -93,21 +93,25 @@
         <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
         </filter>
         </defs>
-        {% when 'left-arrow' %}
-          <g filter="url(#filter0_d)">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M28 36.8675L6.439 20L28 3.1715L27.0715 2L23.0355 5.14879L4 20L27.0865 38L28 36.8675Z" fill="black"/>
-          </g>
-          <defs>
-          <filter id="filter0_d" x="0" y="0" width="32" height="44" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-          <feOffset dy="2"/>
-          <feGaussianBlur stdDeviation="2"/>
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.108384 0"/>
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-          </filter>
-          </defs>
+      {% when 'left-arrow' %}
+        <g filter="url(#filter0_d)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M28 36.8675L6.439 20L28 3.1715L27.0715 2L23.0355 5.14879L4 20L27.0865 38L28 36.8675Z" fill="black"/>
+        </g>
+        <defs>
+        <filter id="filter0_d" x="0" y="0" width="32" height="44" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+        <feOffset dy="2"/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.108384 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+        </filter>
+        </defs>
+      {% when 'close' %}
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.741584 14.6681C0.600162 14.8095 0.600163 15.0216 0.741584 15.1631L0.883005 15.3045C1.02443 15.4459 1.23656 15.4459 1.37798 15.3045L7.95407 8.72839L14.4948 15.2691C14.6362 15.4105 14.8484 15.4105 14.9898 15.2691L15.1312 15.1277C15.2726 14.9863 15.2726 14.7741 15.1312 14.6327L8.59047 8.09199L15.1312 1.55125C15.2726 1.40983 15.2726 1.1977 15.1312 1.05628L14.9898 0.914856C14.8484 0.773434 14.6362 0.773435 14.4948 0.914855L7.95407 7.45559L1.37798 0.8795C1.23656 0.738079 1.02443 0.738079 0.883005 0.8795L0.741584 1.02092C0.600162 1.16234 0.600162 1.37447 0.741584 1.5159L7.31768 8.09199L0.741584 14.6681Z" fill="black"/>
+          </svg>
       {% else %}
         <!-- No icon "{{ icon }}" found -->
         <title>{{ name }}</title>

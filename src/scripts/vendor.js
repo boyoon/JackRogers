@@ -40,6 +40,11 @@
  */
 // =require vendor/slick.js
 
+/*!
+ * cart.min.js
+ */
+// =require vendor/cart.min.js
+
 
 // Attempts to preserve comments that likely contain licensing information,
 // even if the comment does not have directives such as `@license` or `/*!`.

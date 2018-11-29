@@ -1,4 +1,10 @@
 <div class="ProductCustom">
+  
+  <div class="ProductCustom--top js-top">
+    <h1>{{product.title}}</h1>    
+    <p>Price</p>
+  </div>
+
   <div class="ProductCustom--left js-leftSide">
     <div class="ProductCustom__step ProductCustom__step--1 js-step js-stepOne">
       <div class="ProductCustom__title ProductCustom__color--title js-title"><p>1</p></div>
@@ -107,8 +113,9 @@
         <img src="{{section.settings.default_shoe | img_url:'master'}}">      
       </div>
       <div class="ProductCustom__text-container--right js-textContainerRight">
-        <div class="ProductCustom__text--right">
-          <h1>Custom Jack Sandal</h1>
+        <div class="ProductCustom__close js-close">{% include 'icon' with 'close' %}</div>
+        <div class="ProductCustom__text--right js-rightExpand">
+          <h1>{{product.title}}</h1>
           <p class="price">Price</p>
           <p class="ProductCustom__option--line">Sandal Color</p>
           <div class="ProductCustom__option--color js-optionColor"></div>
@@ -117,13 +124,11 @@
           <p class="ProductCustom__option--line">Size and Quantity</p>
           <div class="ProductCustom__option--size js-optionSize">
             <div class="ProductCustom__options">
-
-              
               <div class="ProductCustom__option--swatches ProductCustom__size--swatches js-sizeContainer js-sizeContainer2"></div>
               <div class="ProductCustom__add-more js-addMore--2">Add More Sizes</div>
             </div>
-
           </div>
+          <div class="ProductCustom__reset js-reset">Reset All</div>
           <div class="ProductCustom__add js-add">
             <button>Add to Bag</button>
           </div>
@@ -164,9 +169,10 @@
           {% if tag contains 'color_' %}
             {% assign color = tag | split: '_' | last %}
               <div class="ProductCustom__swatch--container ProductCustom__swatch--color--container">
-                <div class="test">
+                <div class="ProductCustom__text--container">
                   <div data-color="{{color}}" class="{{color}} ProductCustom__swatch--color js-colorSwatch"></div>
-                  <div class="text-info">
+                  <div class="ProductCustom__text--details">
+                    <p class="ProductCustom__text--details--top">SANDAL COLOR</p>
                     <p>{{color}}</p>
                   </div>
                 </div>
@@ -183,7 +189,14 @@
               {% if tag contains 'whipstitch_' %}
               {% assign stitchColor = tag | split: '_' | last %}
                 <div class="ProductCustom__swatch--container ProductCustom__swatch--stitch--container">
-                  <div data-stitch="{{stitchColor}}" class="{{stitchColor}} ProductCustom__swatch--color js-stitchSwatch"></div>
+                  <div class="ProductCustom__text--container">
+                    <div data-stitch="{{stitchColor}}" class="{{stitchColor}} ProductCustom__swatch--color js-stitchSwatch"></div>
+                    <div class="ProductCustom__text--details">
+                      <p class="ProductCustom__text--details--top">WHIPSTICH COLOR</p>
+                      <p>{{stitchColor}}</p>
+                    </div>
+                  </div>
+
                 </div>
               {% endif %}
               {% endfor %}        
@@ -247,269 +260,8 @@
   }
 </style>
 
-
 <script>
-
-
-  //This contains all the combination and handles
-  var variants = [
-    {color:'Black', pattern:'Black', img:'', handle:'baby-jacks-multi'},
-    {color:'Black', pattern:'Blue', img:'', handle:'b'},
-    {color:'Blue', pattern:'Blue', img:'', handle:'c'}
-  ]  
-
-
-
-  //Default Variables
-  var color;
-  var stitch;
-  var $forward = $('.js-forward');
-  var $selectedExists = $('.js-forward').attr('data-first-option');
-  var $selectedExists2 = $('.js-forward').data('first-option');
-  var $selectedExistsTwo = $('.js-forward').attr('data-second-option');
-  
-
-
-  //Slider for color swatches
-  $('.js-slides').slick({
-    centerMode: true,
-    centerPadding: '60px',
-    arrows: false,
-    slidesToShow: 5,
-
-  });
-
-  //Slider for stitch color swatches
-  $('.js-slider').slick({
-    centerMode:true,
-    centerPadding:'60px',
-    arrows: false,
-    slidesToShow:5,
-  })
-
-
-  //On the forward arrow key click
-  $(document).on('click', '.js-forward', function(){
-    let $stepPosition = $(this).closest('.js-stepContainer');
-    let $step = $(this).attr('data-step');
-    $selectedExists = $('.js-forward').attr('data-first-option');
-    $selectedExistsTwo = $('.js-forward').attr('data-second-option');
-
-    //If data-attribute is equal to step 1
-    if ($step == 'step1'){
-      //Increment the step value to step 2
-      $(this).attr('data-step', 'step2');
-      //Also change the data-attribute of the back button
-      $stepPosition.find('.js-back').attr('data-step', 'step2');
-      //Remove the active class
-      $(this).closest('.js-mobile').find('.js-valueMobile').removeClass('active');
-      //Add the active class to the stitch slider
-      $('.js-stitchSlider').addClass('active');
-
-      $stepPosition.find('.js-stepMobile').removeClass('active');
-      $stepPosition.find('.js-stepMobile2').addClass('active');
-      
-      $('.js-back').addClass('show');
-      if ($selectedExists == 'true' ){
-        $forward.prop('disabled', false);
-      }else{
-        $forward.prop('disabled', true);
-        $('.js-forward').attr('data-first-option', true);
-      }
-      if ($selectedExistsTwo == 'true'){
-
-      }else{
-        $forward.prop('disabled', true);
-      }
-    }
-    else if($step == 'step2'){
-      $(this).attr('data-step', 'step3');
-      $(this).closest('.js-mobile').find('.js-valueMobile').removeClass('active');
-      $('.js-Size').addClass('active');
-      $stepPosition.find('.js-back').attr('data-step', 'step3');
-      $stepPosition.find('.js-stepMobile').removeClass('active');
-      $stepPosition.find('.js-stepMobile3').addClass('active');
-      $forward.removeClass('show');
-      if ($selectedExistsTwo == 'true' ){
-        $forward.prop('disabled', false);
-      }else{
-        $forward.prop('disabled', true);
-        $('.js-forward').attr('data-second-option', true);
-      }
-    }
-  });
-
-  $('.js-back').click(function(){
-    let $stepPosition = $(this).closest('.js-stepContainer');
-    let $step = $(this).attr('data-step');
-    $selectedExists = $('.js-forward').attr('data-first-option');
-    $selectedExistsTwo = $('.js-forward').attr('data-second-option');
-    if($step == 'step2'){
-      $(this).attr('data-step', 'step1');
-      $(this).closest('.js-mobile').find('.js-valueMobile').removeClass('active');
-      $('.js-colorSlider').addClass('active');
-      $stepPosition.find('.js-forward').attr('data-step', 'step1');
-      $stepPosition.find('.js-stepMobile').removeClass('active');
-      $stepPosition.find('.js-stepMobile1').addClass('active');
-      $('.js-back').removeClass('show');
-      if ($selectedExists == 'true' ){
-        $forward.prop('disabled', false);
-      }
-    }
-    else if($step == 'step3'){
-      $(this).attr('data-step', 'step2');
-      $(this).closest('.js-mobile').find('.js-valueMobile').removeClass('active');
-      $('.js-stitchSlider').addClass('active');
-      $stepPosition.find('.js-forward').attr('data-step', 'step2');
-      $stepPosition.find('.js-stepMobile').removeClass('active');
-      $stepPosition.find('.js-stepMobile2').addClass('active');
-      $forward.addClass('show');      
-      if ($selectedExistsTwo == 'true' ){
-        $forward.prop('disabled', false);
-      }
-    }
-  });
-
-
-
-
-  //Clicking the start button on main image
-  $('.js-start').click(function(){
-    $('.js-stepOne .js-title').trigger('click');
-    $('.js-mobile').addClass('active');
-  });
-
-  //When clicking the numbers, open up the tab
-  $('.js-title').click(function(){
-    $(this).closest('.js-leftSide').find('.js-step').removeClass('active');
-    $('.js-textContainerRight').removeClass('active');
-    $(this).closest('.js-leftSide').addClass('active');
-    $('.ProductCustom__right__step--1').removeClass('active');
-    $('.ProductCustom__right__step--2').addClass('active');
-    $(this).closest('.js-step').addClass('active');
-    $(this).addClass('active');
-  });
-
-  //Open up step 2 tab, close step 1 tab
-  $('.js-next').click(function(){
-    $(this).closest('.js-step').removeClass('active');
-    $('.js-stepTwo').addClass('active');
-  });
-
-
-
-  $('.js-colorSwatch').click(function(){
-    color = $(this).data('color');
-    $(this).closest('.ProductCustom--options').find('.js-next').addClass('active');
-    $('.js-optionColor').empty();
-    $(this).closest('.ProductCustom__swatch--container').clone().appendTo('.js-optionColor');
-    $forward.prop('disabled', false); 
-    addSizeVariant();
-
-
-  });
-
-  $('.js-stitchSwatch').click(function(){
-    $(this).closest('.ProductCustom--options').find('.ProductCustom__nexted').addClass('active');
-    stitch = $(this).data('stitch');
-    $('.js-optionStitch').empty();
-    $(this).closest('.ProductCustom__swatch--container').clone().appendTo('.js-optionStitch');
-    if ($selectedExistsTwo == '' ){
-      $forward.prop('disabled', false);
-    }
-    addSizeVariant();
-  });
-
-  //Go Back 
-  $('.js-prev').click(function(){
-    $('.js-stepTwo').removeClass('active');
-    $('.js-stepOne').addClass('active');
-  });
-
-
-  //Open up step 3 tab, close step 2 tab
-  $('.js-nextTwo').click(function(){
-    $(this).closest('.js-stepTwo').removeClass('active');
-    $('.js-stepThree').addClass('active');
-  });
-
-
-
-  $('.js-nextThree').click(function(){
-    $('.js-optionSize .js-sizeContainer').empty();
-    //$('.ProductCustom--left').removeClass('active');
-    //$(this).closest('.js-stepThree').removeClass('active');
-    $('.js-sizeContainer select').each(function(){
-      var selectedValue = $(this).val();
-      $(this).clone().val(selectedValue).appendTo('.js-optionSize .js-sizeContainer');      
-    });
-    var spliced = $('.js-optionSize .js-sizeContainer select');
-    for(var i=0; i <spliced.length; i+=2){
-      spliced.slice(i, i+2).wrapAll('<div class="productSelect--custom--2 js-variantQuantity"></div>');
-    }
-    $('.ProductCustom__add').addClass('show');
-    $('.js-stepThree').removeClass('active');
-    $('.js-leftSide').removeClass('active');
-    $('.js-textContainerRight').addClass('active');
-  });
-
-
-  //Add the products into the cart
-  $('.js-add').click(function(i){
-    $('.js-sizeContainer2 .js-variantQuantity').each(function(){
-      let variant = $(this).find('.js-variant').val();
-      let quantity = $(this).find('.js-quantity').val();
-
-      CartJS.addItem(variant, quantity);
-    });
-  });
-
-  $('.js-addMobile').click(function(){
-      $('.js-sizeMobile .js-variantQuantity').each(function(){
-        let variant = $(this).find('.js-variant').val();
-        let quantity = $(this).find('js-quantity').val();
-        console.log(variant, quantity);
-        CartJS.addItem(variant, quantity);
-      });
-    })
-
-  //Loads Size Variants after selecting colors
-  function addSizeVariant(){
-    _.find(variants, function(o){
-      if(o.color === color){
-      if(o.pattern === stitch){
-        var handle = o.handle;
-        $.ajax({
-          type:'GET',
-          url:'https://jackrogersusa.myshopify.com/products/' + handle,
-          beforeSend: function(){
-            $('.ProductCustom__step--3 .ProductCustom__options').addClass('loader');
-            $('.js-sizeMobile').addClass('loader');
-          },
-          success: function(data){
-            var productForm = $(data).find('.productSelect--custom');
-            $('.js-sizeMobile').removeClass('loader');
-            $('.js-nextThree').addClass('active');
-            $('.ProductCustom__step--3 .ProductCustom__options').removeClass('loader');
-            $('.js-stepThree .js-sizeContainer').append(productForm.clone());
-            $('.js-sizeMobile').append(productForm);
-            //script
-            $('.SingleOptionSelector-1').change(function(){
-              var selectedVal = $(this).val();
-            });
-            $('.js-addMore').click(function(){
-              $('.js-stepThree .ProductCustom__size--swatches').append(productForm.clone());
-              $('.js-sizeMobile').append(productForm.clone());
-            });
-            $('.js-addMore--2').click(function(){
-              $('.js-sizeContainer2').append(productForm.clone());
-            });
-          }
-        });
-       } 
-      }
-    });    
-  }
+  customJack();
 </script>
 
 {% schema %}

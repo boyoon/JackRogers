@@ -375,8 +375,15 @@
 .ProductCustom--mobile{
 	display:none;
 }
-
-
+.ProductCustom__text--details p{
+	display:none;
+}
+.ProductCustom__close{
+	display:none;
+}
+.ProductCustom--top{
+	display:none;
+}
 .loader {
   font-size: 10px;
   margin: 50px auto;
@@ -447,6 +454,28 @@
 	.ProductCustom{
 		flex-flow:row wrap;
 	}
+	.ProductCustom--top{
+		background-color:#F4F4F4;
+		width:100%;
+		justify-content: space-between;
+		padding:10px;
+	}
+	.ProductCustom--top.show{
+		display:flex;
+	}
+	.ProductCustom--top h1{
+		font-size:.75rem;
+		text-transform:uppercase;
+		margin-bottom:0;
+		font-family:'Brandon-Reg';
+	}
+	.ProductCustom--top p{
+		margin-bottom:0;
+		font-size:.75rem;
+		text-transform:uppercase;
+		margin-bottom:0;
+		font-family:'Brandon-Bold';
+	}
 	.ProductCustom--mobile.active{
 		display:block;
 	}
@@ -456,6 +485,9 @@
 	.ProductCustom--left{
 		display:none;
 	}
+	.ProductCustom__right__step--2.active .ProductCustom__image-sandal img{
+		margin-left:25px;
+	}
 	.ProductCustom__text-container{
 		position:relative;
 		top:initial;
@@ -463,7 +495,7 @@
 		transform:initial;
 	}
 	.ProductCustom__right__step--2.active .ProductCustom__text-container--right{
-		position:absolute;
+		position:relative;
 		max-width:50px;
 		height:100%;
 		background-color:transparent;
@@ -474,6 +506,7 @@
 	}
 	.ProductCustom__text--right{
 		padding:0;
+		height:100%;
 	}
 	.ProductCustom__swatch--color{
 		margin:0 auto;
@@ -593,5 +626,41 @@
 	.ProductCustom__text-container--right .ProductCustom__swatch--color{
 		margin:initial;
 		margin-left:10px;
+		margin-right:10px;
+	}
+	.ProductCustom__right__step--2.active .ProductCustom__text-container--right.expand{
+		max-width:500px;
+		position:relative;
+	}
+	.ProductCustom__text-container--right.expand .ProductCustom__text--container{
+		display:flex;
+	}
+	.ProductCustom__text-container--right.expand .ProductCustom__text--container .ProductCustom__text--details p{
+		font-family:'Brandon-Reg';
+		display:block;
+		margin-bottom:0;
+		font-size:.5625rem;
+	}
+	.ProductCustom__text-container--right.expand .ProductCustom__text--details--top{
+		border-bottom:1px solid black;
+	}
+	.ProductCustom__option--color{
+		padding-top:40px;
+	}
+	.ProductCustom__close{
+		display:block;
+	}
+	.ProductCustom__close span{
+		opacity:0;
+		visibility:hidden;
+		transition:all .5s ease;
+		position:absolute;
+		right:0;
+		top:5px;
+    width: 27px;
+	}
+	.ProductCustom__text-container--right.expand .ProductCustom__close span{
+		opacity:1;
+		visibility:visible;
 	}
 }
