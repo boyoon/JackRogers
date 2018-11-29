@@ -1,94 +1,94 @@
 <div class="ProductCustom">
-<div class="ProductCustom--left">
-  <div class="ProductCustom__step ProductCustom__step--1 js-step js-stepOne">
-    <div class="ProductCustom__title ProductCustom__color--title js-title"><p>1</p></div>
-    <div class="ProductCustom--options ProductCustom__color--options">
-      <div class="ProductCustom__title-container">
-        <h2>Step 1</h2>
-        <p>Sandal Color</p>
-      </div>
-      
-      <div class="ProductCustom__options">
-        <div class="ProductCustom__label">
-          <p>Sandal Plain</p>
+  <div class="ProductCustom--left js-leftSide">
+    <div class="ProductCustom__step ProductCustom__step--1 js-step js-stepOne">
+      <div class="ProductCustom__title ProductCustom__color--title js-title"><p>1</p></div>
+      <div class="ProductCustom--options ProductCustom__color--options">
+        <div class="ProductCustom__title-container">
+          <h2>Step 1</h2>
+          <p>Sandal Color</p>
         </div>
         
-        <div class="ProductCustom__option--swatches ProductCustom__color--swatches">
-        {% for tag in product.tags %}
-        {% if tag contains 'color_' %}
-          {% assign color = tag | split: '_' | last %}
-            <div class="ProductCustom__swatch--container ProductCustom__swatch--color--container">
-              <div data-color="{{color}}" class="{{color}} ProductCustom__swatch--color js-colorSwatch"></div>
+        <div class="ProductCustom__options">
+          <div class="ProductCustom__label">
+            <p>Sandal Plain</p>
+          </div>
+          
+          <div class="ProductCustom__option--swatches ProductCustom__color--swatches">
+          {% for tag in product.tags %}
+          {% if tag contains 'color_' %}
+            {% assign color = tag | split: '_' | last %}
+              <div class="ProductCustom__swatch--container ProductCustom__swatch--color--container">
+                <div class="test"><div data-color="{{color}}" class="{{color}} ProductCustom__swatch--color js-colorSwatch"></div></div>
+              </div>
+            {% endif %}
+          {% endfor %}
+          </div>
+        </div>
+
+
+        <div class="ProductCustom__next js-next">
+          <button>Next</button>
+        </div>
+      </div>
+    </div>
+    <div class="ProductCustom__step ProductCustom__step--2 js-stepTwo js-step">
+      <div class="ProductCustom__title ProductCustom__stitch--title js-title"><p>2</p></div>
+      <div class="ProductCustom--options ProductCustom__stitch--options">
+        <div class="ProductCustom__title-container">
+          <h2>Step 2</h2>
+          <p>Choose Whipstick color</p>
+        </div>
+
+        <div class="ProductCustom__options">
+          <div class="ProductCustom__label">
+            <p>Whipstich Plain</p>
+          </div>
+          
+          <div class="ProductCustom__option--swatches ProductCustom__stitch--swatches">
+          {% for tag in product.tags %}
+          {% if tag contains 'whipstitch_' %}
+          {% assign stitchColor = tag | split: '_' | last %}
+            <div class="ProductCustom__swatch--container ProductCustom__swatch--stitch--container">
+              <div data-stitch="{{stitchColor}}" class="{{stitchColor}} ProductCustom__swatch--color js-stitchSwatch"></div>
             </div>
           {% endif %}
-        {% endfor %}
-        </div>
-      </div>
-
-
-      <div class="ProductCustom__next js-next">
-        <button>Next</button>
-      </div>
-    </div>
-  </div>
-  <div class="ProductCustom__step ProductCustom__step--2 js-stepTwo js-step">
-    <div class="ProductCustom__title ProductCustom__stitch--title js-title"><p>2</p></div>
-    <div class="ProductCustom--options ProductCustom__stitch--options">
-      <div class="ProductCustom__title-container">
-        <h2>Step 2</h2>
-        <p>Choose Whipstick color</p>
-      </div>
-
-      <div class="ProductCustom__options">
-        <div class="ProductCustom__label">
-          <p>Whipstich Plain</p>
-        </div>
-        
-        <div class="ProductCustom__option--swatches ProductCustom__stitch--swatches">
-        {% for tag in product.tags %}
-        {% if tag contains 'whipstitch_' %}
-        {% assign stitchColor = tag | split: '_' | last %}
-          <div class="ProductCustom__swatch--container ProductCustom__swatch--stitch--container">
-            <div data-stitch="{{stitchColor}}" class="{{stitchColor}} ProductCustom__swatch--color js-stitchSwatch"></div>
+          {% endfor %}
           </div>
-        {% endif %}
-        {% endfor %}
         </div>
+
+
+        <div class="ProductCustom__next ProductCustom__next--2">
+          <button class="ProductCustom__prev js-prev">Back</button>
+          <button class="ProductCustom__nexted js-nextTwo">Next</button>
+        </div>
+
       </div>
+    </div>
+    <div class="ProductCustom__step ProductCustom__step--3 js-step js-stepThree">
+      <div class="ProductCustom__title ProductCustom__size--title js-title"><p>3</p></div>
+      <div class="ProductCustom--options ProductCustom__size--options">
+        <div class="ProductCustom__title-container">
+          <h2>Step 3</h2>
+          <p>Choose Size</p>
+        </div>
 
+        <div class="ProductCustom__options">
+          <div class="ProductCustom__label">
+            <p>Size</p>
+          </div>
+          
+          <div class="ProductCustom__option--swatches ProductCustom__size--swatches js-sizeContainer"></div>
+          <div class="ProductCustom__add-more js-addMore">Add More Sizes</div>
+        </div>
 
-      <div class="ProductCustom__next ProductCustom__next--2">
-        <button class="ProductCustom__prev js-prev">Back</button>
-        <button class="ProductCustom__nexted js-nextTwo">Next</button>
+        <div class="ProductCustom__next ProductCustom__next--2">
+          <button class="ProductCustom__prev js-prevThree">Back</button>
+          <button class="ProductCustom__nexted js-nextThree">Next</button>
+        </div>
+
       </div>
-
     </div>
   </div>
-  <div class="ProductCustom__step ProductCustom__step--3 js-step js-stepThree">
-    <div class="ProductCustom__title ProductCustom__size--title js-title"><p>3</p></div>
-    <div class="ProductCustom--options ProductCustom__size--options">
-      <div class="ProductCustom__title-container">
-        <h2>Step 3</h2>
-        <p>Choose Size</p>
-      </div>
-
-      <div class="ProductCustom__options">
-        <div class="ProductCustom__label">
-          <p>Size</p>
-        </div>
-        
-        <div class="ProductCustom__option--swatches ProductCustom__size--swatches js-sizeContainer"></div>
-        <div class="ProductCustom__add-more js-addMore">Add More Sizes</div>
-      </div>
-
-      <div class="ProductCustom__next ProductCustom__next--2">
-        <button class="ProductCustom__prev js-prevThree">Back</button>
-        <button class="ProductCustom__nexted js-nextThree">Next</button>
-      </div>
-
-    </div>
-  </div>
-</div>
 
   <div class="ProductCustom--right">
     <div class="ProductCustom__right__step--1 active">
@@ -99,14 +99,14 @@
         <h2>{{section.settings.main_title}}</h2>
         <h3>{{section.settings.main_sub}}</h3>
         <p>{{section.settings.subtitle}}</p>
-        <button>{{section.settings.button_text}}</button>
+        <button class="js-start">{{section.settings.button_text}}</button>
       </div>
     </div>
     <div class="ProductCustom__right__step--2">
       <div class="ProductCustom__image-sandal">
         <img src="{{section.settings.default_shoe | img_url:'master'}}">      
       </div>
-      <div class="ProductCustom__text-container--right">
+      <div class="ProductCustom__text-container--right js-textContainerRight">
         <div class="ProductCustom__text--right">
           <h1>Custom Jack Sandal</h1>
           <p class="price">Price</p>
@@ -119,15 +119,94 @@
             <div class="ProductCustom__options">
 
               
-              <div class="ProductCustom__option--swatches ProductCustom__size--swatches js-sizeContainer"></div>
-              <div class="ProductCustom__add-more js-addMore">Add More Sizes</div>
+              <div class="ProductCustom__option--swatches ProductCustom__size--swatches js-sizeContainer js-sizeContainer2"></div>
+              <div class="ProductCustom__add-more js-addMore--2">Add More Sizes</div>
             </div>
 
+          </div>
+          <div class="ProductCustom__add js-add">
+            <button>Add to Bag</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="ProductCustom--mobile js-mobile">
+
+      <div class="ProductCustom__step-container js-stepContainer"> 
+          
+          <button class="ProductCustom__back js-back" data-step="step1"><</button>
+          
+          <div class="ProductCustom__step--mobile ProductCustom__mobile--1 js-stepMobile js-stepMobile1 active" data-step="step1">
+           <h3>Step 1/3</h3>
+           <p>Sandal Color or Pattern</p>
+          </div>
+          
+          <div class="ProductCustom__step--mobile ProductCustom__mobile--2 js-stepMobile js-stepMobile2 " data-step="step2">
+            <h3>Step 2/3</h3>
+            <p>Choose Whipstich color</p>
+          </div>
+          
+          <div class="ProductCustom__step--mobile ProductCustom__mobile--3 js-stepMobile js-stepMobile3 " data-step="step3">
+            <h3>Step 3/3</h3>
+            <p>Choose Size & Quantity</p>
+          </div>
+          
+          <button class="ProductCustom__forward js-forward show" data-step="step1" data-first-option="" data-second-option="" disabled>></button>
+          
+      </div>
+      
+      <div class="ProductCustom__value-container js-valueContainer">
+        <div class="ProductCustom__step--mobile ProductCustom__color--slider js-valueMobile js-colorSlider active" data-step="step1">
+          <div class=" js-slides">
+          {% for tag in product.tags %}
+          {% if tag contains 'color_' %}
+            {% assign color = tag | split: '_' | last %}
+              <div class="ProductCustom__swatch--container ProductCustom__swatch--color--container">
+                <div class="test">
+                  <div data-color="{{color}}" class="{{color}} ProductCustom__swatch--color js-colorSwatch"></div>
+                  <div class="text-info">
+                    <p>{{color}}</p>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+          </div>
+        </div>
+
+
+        <div class="ProductCustom__step--mobile ProductCustom__stitch--slider js-valueMobile js-stitchSlider" data-step="step2">
+          <div class="js-slider">
+              {% for tag in product.tags %}
+              {% if tag contains 'whipstitch_' %}
+              {% assign stitchColor = tag | split: '_' | last %}
+                <div class="ProductCustom__swatch--container ProductCustom__swatch--stitch--container">
+                  <div data-stitch="{{stitchColor}}" class="{{stitchColor}} ProductCustom__swatch--color js-stitchSwatch"></div>
+                </div>
+              {% endif %}
+              {% endfor %}        
+          </div>
+        </div>
+
+
+        <div class="ProductCustom__step--mobile ProductCustom__size js-valueMobile js-Size" data-step="step3">
+          <div class="ProductCustom__size--container js-sizeMobile">
+            
+          </div>
+          
+          <div class="ProductCustom__add-more js-addMore">Add More Sizes</div>
+
+          <div class="ProductCustom__add--mobile js-addMobile">
+            <button>Add to Bag</button>
+          </div>
+        </div>
+      </div>
+
+  </div>
+
+
 </div>
 
 <style>
@@ -171,98 +250,266 @@
 
 <script>
 
+
+  //This contains all the combination and handles
+  var variants = [
+    {color:'Black', pattern:'Black', img:'', handle:'baby-jacks-multi'},
+    {color:'Black', pattern:'Blue', img:'', handle:'b'},
+    {color:'Blue', pattern:'Blue', img:'', handle:'c'}
+  ]  
+
+
+
+  //Default Variables
+  var color;
+  var stitch;
+  var $forward = $('.js-forward');
+  var $selectedExists = $('.js-forward').attr('data-first-option');
+  var $selectedExists2 = $('.js-forward').data('first-option');
+  var $selectedExistsTwo = $('.js-forward').attr('data-second-option');
+  
+
+
+  //Slider for color swatches
+  $('.js-slides').slick({
+    centerMode: true,
+    centerPadding: '60px',
+    arrows: false,
+    slidesToShow: 5,
+
+  });
+
+  //Slider for stitch color swatches
+  $('.js-slider').slick({
+    centerMode:true,
+    centerPadding:'60px',
+    arrows: false,
+    slidesToShow:5,
+  })
+
+
+  //On the forward arrow key click
+  $(document).on('click', '.js-forward', function(){
+    let $stepPosition = $(this).closest('.js-stepContainer');
+    let $step = $(this).attr('data-step');
+    $selectedExists = $('.js-forward').attr('data-first-option');
+    $selectedExistsTwo = $('.js-forward').attr('data-second-option');
+
+    //If data-attribute is equal to step 1
+    if ($step == 'step1'){
+      //Increment the step value to step 2
+      $(this).attr('data-step', 'step2');
+      //Also change the data-attribute of the back button
+      $stepPosition.find('.js-back').attr('data-step', 'step2');
+      //Remove the active class
+      $(this).closest('.js-mobile').find('.js-valueMobile').removeClass('active');
+      //Add the active class to the stitch slider
+      $('.js-stitchSlider').addClass('active');
+
+      $stepPosition.find('.js-stepMobile').removeClass('active');
+      $stepPosition.find('.js-stepMobile2').addClass('active');
+      
+      $('.js-back').addClass('show');
+      if ($selectedExists == 'true' ){
+        $forward.prop('disabled', false);
+      }else{
+        $forward.prop('disabled', true);
+        $('.js-forward').attr('data-first-option', true);
+      }
+      if ($selectedExistsTwo == 'true'){
+
+      }else{
+        $forward.prop('disabled', true);
+      }
+    }
+    else if($step == 'step2'){
+      $(this).attr('data-step', 'step3');
+      $(this).closest('.js-mobile').find('.js-valueMobile').removeClass('active');
+      $('.js-Size').addClass('active');
+      $stepPosition.find('.js-back').attr('data-step', 'step3');
+      $stepPosition.find('.js-stepMobile').removeClass('active');
+      $stepPosition.find('.js-stepMobile3').addClass('active');
+      $forward.removeClass('show');
+      if ($selectedExistsTwo == 'true' ){
+        $forward.prop('disabled', false);
+      }else{
+        $forward.prop('disabled', true);
+        $('.js-forward').attr('data-second-option', true);
+      }
+    }
+  });
+
+  $('.js-back').click(function(){
+    let $stepPosition = $(this).closest('.js-stepContainer');
+    let $step = $(this).attr('data-step');
+    $selectedExists = $('.js-forward').attr('data-first-option');
+    $selectedExistsTwo = $('.js-forward').attr('data-second-option');
+    if($step == 'step2'){
+      $(this).attr('data-step', 'step1');
+      $(this).closest('.js-mobile').find('.js-valueMobile').removeClass('active');
+      $('.js-colorSlider').addClass('active');
+      $stepPosition.find('.js-forward').attr('data-step', 'step1');
+      $stepPosition.find('.js-stepMobile').removeClass('active');
+      $stepPosition.find('.js-stepMobile1').addClass('active');
+      $('.js-back').removeClass('show');
+      if ($selectedExists == 'true' ){
+        $forward.prop('disabled', false);
+      }
+    }
+    else if($step == 'step3'){
+      $(this).attr('data-step', 'step2');
+      $(this).closest('.js-mobile').find('.js-valueMobile').removeClass('active');
+      $('.js-stitchSlider').addClass('active');
+      $stepPosition.find('.js-forward').attr('data-step', 'step2');
+      $stepPosition.find('.js-stepMobile').removeClass('active');
+      $stepPosition.find('.js-stepMobile2').addClass('active');
+      $forward.addClass('show');      
+      if ($selectedExistsTwo == 'true' ){
+        $forward.prop('disabled', false);
+      }
+    }
+  });
+
+
+
+
+  //Clicking the start button on main image
+  $('.js-start').click(function(){
+    $('.js-stepOne .js-title').trigger('click');
+    $('.js-mobile').addClass('active');
+  });
+
+  //When clicking the numbers, open up the tab
   $('.js-title').click(function(){
-    $(this).closest('.ProductCustom--left').find('.js-step').removeClass('active');
-    $(this).closest('.ProductCustom--left').addClass('active');
+    $(this).closest('.js-leftSide').find('.js-step').removeClass('active');
+    $('.js-textContainerRight').removeClass('active');
+    $(this).closest('.js-leftSide').addClass('active');
     $('.ProductCustom__right__step--1').removeClass('active');
     $('.ProductCustom__right__step--2').addClass('active');
     $(this).closest('.js-step').addClass('active');
     $(this).addClass('active');
   });
+
+  //Open up step 2 tab, close step 1 tab
   $('.js-next').click(function(){
     $(this).closest('.js-step').removeClass('active');
     $('.js-stepTwo').addClass('active');
   });
 
-  var color;
-  var variants = [
-    {color:'Black', pattern:'Black', handle:'baby-jacks-multi'},
-    {color:'Black', pattern:'Blue', handle:'b'},
-    {color:'Blue', pattern:'Blue', handle:'c'}
-  ]
+
 
   $('.js-colorSwatch').click(function(){
     color = $(this).data('color');
     $(this).closest('.ProductCustom--options').find('.js-next').addClass('active');
     $('.js-optionColor').empty();
     $(this).closest('.ProductCustom__swatch--container').clone().appendTo('.js-optionColor');
+    $forward.prop('disabled', false); 
+    addSizeVariant();
+
+
   });
 
   $('.js-stitchSwatch').click(function(){
     $(this).closest('.ProductCustom--options').find('.ProductCustom__nexted').addClass('active');
-
-    var stitch = $(this).data('stitch');
+    stitch = $(this).data('stitch');
     $('.js-optionStitch').empty();
     $(this).closest('.ProductCustom__swatch--container').clone().appendTo('.js-optionStitch');
-    console.log(color, stitch);
-    _.find(variants, function(o){
-      if(o.color === color){
-       if(o.pattern === stitch){
-          var handle = o.handle;
-          $.ajax({
-            type:'GET',
-            url:'https://jackrogersusa.myshopify.com/products/' + handle,
-            beforeSend: function(){
-              $('.ProductCustom__step--3 .ProductCustom__options').addClass('loader');
-            },
-            success: function(data){
-              console.log('success');
-
-              $('.ProductCustom__step--3 .ProductCustom__options').removeClass('loader');
-              var productForm = $(data).find('.productSelect--custom');
-              console.log(productForm);
-              $('.js-stepThree .ProductCustom__size--swatches').append(productForm);
-
-              //script
-              $('.SingleOptionSelector-1').change(function(){
-                var selectedVal = $(this).val();
-                console.log(selectedVal);
-              });
-              $('.js-addMore').click(function(){
-                $('.js-stepThree .ProductCustom__size--swatches').append(productForm.clone());
-                $('.js-optionSize .ProductCustom__size--swatches.active').append(productForm.clone());
-              });
-            }
-          });
-       } 
-      }
-    });
+    if ($selectedExistsTwo == '' ){
+      $forward.prop('disabled', false);
+    }
+    addSizeVariant();
   });
 
+  //Go Back 
   $('.js-prev').click(function(){
     $('.js-stepTwo').removeClass('active');
-    $('.js-stepOne').addClass('active')
+    $('.js-stepOne').addClass('active');
   });
+
+
+  //Open up step 3 tab, close step 2 tab
   $('.js-nextTwo').click(function(){
     $(this).closest('.js-stepTwo').removeClass('active');
     $('.js-stepThree').addClass('active');
   });
 
+
+
   $('.js-nextThree').click(function(){
     $('.js-optionSize .js-sizeContainer').empty();
     //$('.ProductCustom--left').removeClass('active');
     //$(this).closest('.js-stepThree').removeClass('active');
-    $('.productSelect--custom select').each(function(i){
-      console.log($(this));
+    $('.js-sizeContainer select').each(function(){
       var selectedValue = $(this).val();
       $(this).clone().val(selectedValue).appendTo('.js-optionSize .js-sizeContainer');      
     });
     var spliced = $('.js-optionSize .js-sizeContainer select');
-    console.log(spliced.length);
     for(var i=0; i <spliced.length; i+=2){
-      spliced.slice(i, i+2).wrapAll('<div class="productSelect--custom--2"></div>');
+      spliced.slice(i, i+2).wrapAll('<div class="productSelect--custom--2 js-variantQuantity"></div>');
     }
+    $('.ProductCustom__add').addClass('show');
+    $('.js-stepThree').removeClass('active');
+    $('.js-leftSide').removeClass('active');
+    $('.js-textContainerRight').addClass('active');
   });
+
+
+  //Add the products into the cart
+  $('.js-add').click(function(i){
+    $('.js-sizeContainer2 .js-variantQuantity').each(function(){
+      let variant = $(this).find('.js-variant').val();
+      let quantity = $(this).find('.js-quantity').val();
+
+      CartJS.addItem(variant, quantity);
+    });
+  });
+
+  $('.js-addMobile').click(function(){
+      $('.js-sizeMobile .js-variantQuantity').each(function(){
+        let variant = $(this).find('.js-variant').val();
+        let quantity = $(this).find('js-quantity').val();
+        console.log(variant, quantity);
+        CartJS.addItem(variant, quantity);
+      });
+    })
+
+  //Loads Size Variants after selecting colors
+  function addSizeVariant(){
+    _.find(variants, function(o){
+      if(o.color === color){
+      if(o.pattern === stitch){
+        var handle = o.handle;
+        $.ajax({
+          type:'GET',
+          url:'https://jackrogersusa.myshopify.com/products/' + handle,
+          beforeSend: function(){
+            $('.ProductCustom__step--3 .ProductCustom__options').addClass('loader');
+            $('.js-sizeMobile').addClass('loader');
+          },
+          success: function(data){
+            var productForm = $(data).find('.productSelect--custom');
+            $('.js-sizeMobile').removeClass('loader');
+            $('.js-nextThree').addClass('active');
+            $('.ProductCustom__step--3 .ProductCustom__options').removeClass('loader');
+            $('.js-stepThree .js-sizeContainer').append(productForm.clone());
+            $('.js-sizeMobile').append(productForm);
+            //script
+            $('.SingleOptionSelector-1').change(function(){
+              var selectedVal = $(this).val();
+            });
+            $('.js-addMore').click(function(){
+              $('.js-stepThree .ProductCustom__size--swatches').append(productForm.clone());
+              $('.js-sizeMobile').append(productForm.clone());
+            });
+            $('.js-addMore--2').click(function(){
+              $('.js-sizeContainer2').append(productForm.clone());
+            });
+          }
+        });
+       } 
+      }
+    });    
+  }
 </script>
 
 {% schema %}

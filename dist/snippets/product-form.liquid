@@ -99,9 +99,9 @@
       </div>
     </div>
 
-    <div class="hidden productSelect--custom">
+    <div class="hidden productSelect--custom js-variantQuantity">
       <div class="select-wrapper">
-        <select name="id" data-index="option{{ forloop.index }}">
+        <select name="id" class="js-variant" data-index="option{{ forloop.index }}">
           {% for variant in product.variants %}
             {% if variant.available %}
               <option
@@ -116,7 +116,7 @@
         </select>
       </div>
       <div class="quantity-selector">
-        <select name="" id="">
+        <select name="" id="" class="js-quantity">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
